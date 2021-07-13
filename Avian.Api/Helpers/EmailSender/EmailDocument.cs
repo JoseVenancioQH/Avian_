@@ -26,11 +26,11 @@ namespace Avian.Api.Helpers.EmailSender
 
                 List<string> EmailTo = new List<string>
                 {
-                    //"psanchez@gcib.net",
-                    //"vdominguez@gcib.net"
+                    //"psanchez@emailtest.net",
+                    //"vdominguez@emailtest.net"
                     //"rsolorzano@ctcadjusters.com",
-                    //"esalcedo@gcib.net",
-                    "jquintero@gcib.net"
+                    //"esalcedo@emailtest.net",
+                    "jquintero@emailtest.net"
                 };
 
                 if (EmailToArg.Count > 0)
@@ -52,9 +52,9 @@ namespace Avian.Api.Helpers.EmailSender
                 List<string> EmailCc = new List<string>
                 {
                     //"jst@ghins.com",
-                    //"ssahota@gcib.net",
-                    //"esalcedo@gcib.net",
-                    //"egaytan@gcib.net"
+                    //"ssahota@emailtest.net",
+                    //"esalcedo@emailtest.net",
+                    //"egaytan@emailtest.net"
                 };
 
                 if (EmailCcArg.Count > 0)

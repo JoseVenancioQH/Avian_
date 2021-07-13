@@ -28,17 +28,17 @@ namespace EmailSender
 
                 List<string> EmailTo = new List<string>
                 {                    
-                    //"psanchez@gcib.net",
-                    //"vdominguez@gcib.net"
+                    //"psanchez@emailtest.net",
+                    //"vdominguez@emailtest.net"
                     //"rsolorzano@ctcadjusters.com"
                 };
 
                 List<string> EmailCc = new List<string>
                 {
                     //"jst@ghins.com",
-                    //"ssahota@gcib.net",
-                    //"esalcedo@gcib.net",
-                    "jquintero@gcib.net"                    
+                    //"ssahota@emailtest.net",
+                    //"esalcedo@emailtest.net",
+                    "jquintero@emailtest.net"                    
                 };
                                 
                 try

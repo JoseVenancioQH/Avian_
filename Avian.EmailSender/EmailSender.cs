@@ -17,9 +17,9 @@ namespace EmailSender
             {
                 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2013_SP1);
                 //TODO: Create Account For The Human Resources APP
-                service.Credentials = new WebCredentials("notification@gcib.net", "123%Abcd");
+                service.Credentials = new WebCredentials("notification@emailtest.net", "123%Abcd");
                 service.UseDefaultCredentials = false;
-                service.AutodiscoverUrl("notification@gcib.net", RedirectionUrlValidationCallback);
+                service.AutodiscoverUrl("notification@emailtest.net", RedirectionUrlValidationCallback);
                 
                 EmailMessage email = new EmailMessage(service);
 

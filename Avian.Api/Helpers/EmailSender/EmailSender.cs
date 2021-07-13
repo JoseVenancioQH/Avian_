@@ -19,11 +19,11 @@ namespace Avian.Api.Helpers.EmailSender
             {
                 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2013_SP1);
                 //TODO: Create Account For The Human Resources APP
-                //service.Credentials = new WebCredentials("notification@gcib.net", "123%Abcd");
-                service.Credentials = new WebCredentials("jquintero@gcib.net", "Quintero%1");
+                //service.Credentials = new WebCredentials("notification@emailtest.net", "123%Abcd");
+                service.Credentials = new WebCredentials("jquintero@emailtest.net", "Quintero%1");
                 service.UseDefaultCredentials = false;
-                service.AutodiscoverUrl("jquintero@gcib.net", RedirectionUrlValidationCallback);
-                //service.AutodiscoverUrl("notification@gcib.net", RedirectionUrlValidationCallback);
+                service.AutodiscoverUrl("jquintero@emailtest.net", RedirectionUrlValidationCallback);
+                //service.AutodiscoverUrl("notification@emailtest.net", RedirectionUrlValidationCallback);
 
                 EmailMessage email = new EmailMessage(service);
 
