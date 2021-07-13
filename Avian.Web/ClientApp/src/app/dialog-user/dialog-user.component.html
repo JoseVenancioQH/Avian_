@@ -1,0 +1,86 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title *ngIf='this.IsNullOrGuidEmpty(User.UserId)'>Add User</mat-card-title>
+        <mat-card-title *ngIf='!this.IsNullOrGuidEmpty(User.UserId)'>Edit User</mat-card-title>
+      </mat-card-header>
+  
+      <form [formGroup]="UserForm">
+  
+        <mat-card-content>
+          <mat-card class='col-md-12'>
+            <div class='row' >
+                <div>
+                <mat-button-toggle-group class="float-right" appearance="legacy" class="form-control" formControlName="UserStatus" [(ngModel)]="User.Status" [value]="User.Status" name="fontStyle" class='float-right' aria-label="Font Style" #group="matButtonToggleGroup">                
+                    <mat-button-toggle class=" col-md-6" [value]="true">Active</mat-button-toggle>                  
+                    <mat-button-toggle class=" col-md-6" [value]="false">Inactive</mat-button-toggle>                                  
+                </mat-button-toggle-group>
+                </div>
+            </div>
+          </mat-card>
+          <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="User.FirstName" formControlName="FirstName" name="FirstName" placeholder="FirstName">
+          </mat-form-field>
+          <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="User.LastName" formControlName="LastName" name="LastName" placeholder="LastName">
+          </mat-form-field>
+          <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="User.UserName" formControlName="UserName" name="UserName" placeholder="User Name">
+          </mat-form-field>
+  
+          <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="User.Email" formControlName="Email" name="Email" placeholder="Email">
+          </mat-form-field>
+  
+          <mat-form-field class="col-sm-12">
+            <input matInput type="password" [(ngModel)]="User.Password" formControlName="Password" name="Password" placeholder="Password">
+          </mat-form-field>  
+          
+          <div class="scroller-container">
+          <mat-card formArrayName="ProfileControl" *ngFor="let ProfileUser of User.ProfileUser; let i = index" cdkScrollable>                 
+              <div *ngFor="let Profile of ProfileUser.Profile; let j = index" [formGroupName]="j" class='col-md-12'>    
+               <div class='row' *ngIf="this.User.ProfileUser[i].Profile[j].ControlUpdate">               
+                <div class='col-md-12'>
+                  <mat-form-field  class='col-md-10'>
+                    <mat-label>Profile</mat-label>
+                    <mat-select [(ngModel)]="this.User.ProfileUser[i].Profile[j].CatlogsId" [compareWith]="compareProfile" name="Profile" #Profile formControlName="Profile" placeholder="Profile" (selectionChange)="profileChanged(i,j,$event.value)">
+                      <mat-option *ngFor="let Profile of data.Profile;let j = index" [value]="Profile.ProfileId">
+                        {{Profile.ProfileName}}
+                      </mat-option>
+                    </mat-select>                
+                  </mat-form-field>
+                  <button class='col-md-2' type="button"  mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickProfileAdd(i,j):onClickProfileRemove(i,j)" [attr.aria-pressed]="hide">
+                    <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                    <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                  </button>
+                </div> 
+                <div class='col-md-12'>              
+                    <mat-form-field class='col-md-12'>
+                      <mat-label>Permission:</mat-label>
+                      <mat-select  #PermissionSelect multiple required [compareWith]="compareObjects" formControlName="Permission" [(ngModel)]="this.User.ProfileUser[i].Profile[j].Permissions" name="Permission" placeholder="Permission">
+                        <mat-option  *ngFor="let Catlog of this.data.Permission"
+                                    [value]="Catlog">
+                          {{Catlog.CatlogsName}}
+                        </mat-option>
+                        <mat-option  *ngFor="let Catlog of this.data.PermissionCRUD"
+                                    [value]="Catlog">
+                          {{Catlog.CatlogsName}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div> 
+              </div>             
+            </div>          
+          </mat-card>
+          </div>
+        </mat-card-content>
+  
+        <button type="button" *ngIf="this.IsNullOrGuidEmpty(User.UserId)" color="accent" (click)="SaveUser()" class="btn-block">Add</button>
+        <button type="button" *ngIf="!this.IsNullOrGuidEmpty(User.UserId)" color="accent" (click)="SaveUser()" class="btn-block">Edit</button>
+  
+      </form>
+    </mat-card>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>    
+  </div>
+  </div>

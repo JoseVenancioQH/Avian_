@@ -1,0 +1,36 @@
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.deps.json
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.pdb
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.dll
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.pdb
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csprojAssemblyReference.cache
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CoreCompileInputs.cache
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfoInputs.cache
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfo.cs
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CopyComplete
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HRV2realase\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.pdb
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.deps.json
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.pdb
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.dll
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.pdb
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csprojAssemblyReference.cache
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CoreCompileInputs.cache
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfoInputs.cache
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfo.cs
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CopyComplete
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HRV2realase - Copy\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.pdb
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.deps.json
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Data.pdb
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.dll
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\bin\Release\netstandard2.0\HumanResources.Core.pdb
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csprojAssemblyReference.cache
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CoreCompileInputs.cache
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfoInputs.cache
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.AssemblyInfo.cs
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.csproj.CopyComplete
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.dll
+C:\Users\jquintero\Documents\HR\HumanResources\HumanResources.Data\obj\Release\netstandard2.0\HumanResources.Data.pdb

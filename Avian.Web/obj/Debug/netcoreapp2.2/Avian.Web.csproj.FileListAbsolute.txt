@@ -1,0 +1,90 @@
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\packages.config
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings1.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\package-lock.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.deps.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.dev.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csprojAssemblyReference.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CoreCompileInputs.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfoInputs.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.input.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.output.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorCoreGenerate.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Razor\Index.cshtml.g.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.genruntimeconfig.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CopyComplete
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\packages.config
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\appsettings1.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\package-lock.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.deps.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.dev.json
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.dll
+C:\AvianWeb\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csprojAssemblyReference.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CoreCompileInputs.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cs
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfoInputs.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfo.cs
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.input.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.output.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorCoreGenerate.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Razor\Index.cshtml.g.cs
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cs
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.genruntimeconfig.cache
+C:\AvianWeb\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CopyComplete
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\packages.config
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\appsettings1.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\package-lock.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.deps.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.runtimeconfig.dev.json
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.dll
+C:\Avian\Avian.Web\bin\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csprojAssemblyReference.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CoreCompileInputs.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorAssemblyInfo.cs
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfoInputs.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.AssemblyInfo.cs
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.input.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.TagHelpers.output.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorCoreGenerate.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Razor\Index.cshtml.g.cs
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.RazorTargetAssemblyInfo.cs
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.dll
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\ASP.NET Core 2.1 with Angular 7.pdb
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.genruntimeconfig.cache
+C:\Avian\Avian.Web\obj\Debug\netcoreapp2.2\Avian.Web.csproj.CopyComplete

@@ -1,0 +1,44 @@
+
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 100%;
+  color: white;
+  background-color: red;
+}
+
+.login-card {
+  width: 30%;
+}
+
+.login-header-image {
+  background-image: 'assets/img/avian-bap.png';
+  background-size: cover;
+}
+
+.tarjeta {
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.circular {
+  border-radius: 50%;
+}
+
+.contenedor {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgXrg8uwxFEekSy2Sb7fswQAAAAACAAAAAAAQZgAAAAEAACAAAAC7KeieI2P7vKsPcRK/a3ArTef7eGKwiwjfXRHN6LmXLQAAAAAOgAAAAAIAACAAAADGliTyY3WWfoN3vDQxbc5AZvN1EC6CCnEZdfj0RMSE1IAAAABGRZk1tXEmthSjkbrJ8MecygJCnaN9VmVmP2h6lF2p3IUdc7BjMQMMIWHhuwWBgW/SL8owhajB0K9eoei/kJ46FFhVqNvy6pa3/Bdh7ZTGzuLKd/akNh36HCN5cCCTNklJvhYjsqcrSEFJvT3efy+krRp+zfIKVaLW9OQsk7sveEAAAACsPS0q6hfzg7q3rci28+1/qKOC+nRTUwbYn7fBk9mDxDEMWi5vvpaShSf97ACHs2L8w8eiQ/S6HNJH4ZBC8Zf1</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="NewHumanResourcesConnectionString">
+      <Value>Data Source=192.168.2.54\MSSQLSERVER2012%3bInitial Catalog=NewHumanResources%3bpersist security info=True%3bMin Pool Size=3%3buser id=humanresources%3bpassword=sa123%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

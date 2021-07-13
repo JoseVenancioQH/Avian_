@@ -1,0 +1,99 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3 mat-dialog-title>
+        Broker Information
+      </h3>
+      <div class="broker-information-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="DateTimeCreate" sticky>
+            <th mat-header-cell *matHeaderCellDef> Date Create </th>
+            <td mat-cell *matCellDef="let element"> {{element.DateTimeCreate}} </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="AgencyRequestNumber">
+            <th mat-header-cell *matHeaderCellDef> Request Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.AgencyRequestNumber}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="AgencyName">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.AgencyName}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Abemail">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element">
+              <table>
+                <tr *ngFor="let Email of element.Abemail">
+                  <td>{{Email.Email}}</td>
+                </tr>
+              </table>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Abphone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element">
+              <table>
+                <tr *ngFor="let Phone of element.Abphone">
+                  <td>{{Phone.Phone}}</td>
+                </tr>
+              </table>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="AgencyStatus">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <table>
+                <tr *ngFor="let Status of this.CatlogsAgencyStatus">
+                  <td *ngIf="element.AgencyStatus==Status.CatlogsId">{{Status.CatlogsName}}</td>
+                </tr>
+              </table>
+            </td>
+          </ng-container>
+
+          <!-- Star Column -->
+          <ng-container matColumnDef="star" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="viewAgency(element.AgencyId)">
+                  <mat-icon>pageview</mat-icon>
+                  <span>View</span>
+                </button>
+                <button mat-menu-item (click)="deleteAgency(element.AgencyId)" *ngIf="checkPermissions('Delete')">
+                  <mat-icon>delete_forever</mat-icon>
+                  <span>Delete</span>
+                </button>
+                <button *ngIf="element.DocumentGenerateStatus" mat-menu-item (click)="viewDocument(element.AgencyRequestNumber)">
+                  <mat-icon>attach_file</mat-icon>
+                  <span>File</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

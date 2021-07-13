@@ -1,0 +1,68 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title *ngIf='this.IsNullOrGuidEmpty(EmailStatus.EmailStatusId)'>Add Status Email</mat-card-title>
+        <mat-card-title *ngIf='!this.IsNullOrGuidEmpty(EmailStatus.EmailStatusId)'>Edit Status Email</mat-card-title>
+      </mat-card-header>
+  
+      <form [formGroup]="EmailStatusForm">
+  
+        <mat-card-content>
+          <mat-card class='col-md-12'>
+            <div class='row' >
+               <div class="col-md-6">
+                <mat-button-toggle-group class="float-left" appearance="legacy" class="form-control" formControlName="EmailStatus" [(ngModel)]="EmailStatus.Status" [value]="EmailStatus.Status" name="fontStyle" class='float-right' aria-label="Font Style" #group="matButtonToggleGroup">                
+                    <mat-button-toggle class="col-md-6" [value]="true">Active</mat-button-toggle>                  
+                    <mat-button-toggle class="col-md-6" [value]="false">Inactive</mat-button-toggle>                                  
+                </mat-button-toggle-group>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class='float-right'>
+                  <mat-label>Type Send</mat-label>
+                  <input matInput type="number" readonly [(ngModel)]="EmailStatus.TypeSend" formControlName="TypeSend" name="TypeSend" placeholder="">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+          <mat-form-field appearance="fill" class='col-md-12'>
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="EmailStatus.StatusCatlogsId" name="StatusCatlogs" formControlName="StatusCatlogs" placeholder="Status">
+              <mat-option *ngFor="let Status of this.CatlogsAgencyStatus" [value]="Status.CatlogsId">
+                {{Status.CatlogsName}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Required</mat-error> 
+          </mat-form-field>
+          <div class="scroller-container" formArrayName="EmailToControl">
+            <mat-card class='col-md-12' *ngFor="let EmailTo of EmailStatus.EmailTo; let i = index;trackBy:trackByIdx" [formGroupName]="i" cdkScrollable>
+                <mat-form-field class="col-sm-10">
+                    <input matInput [(ngModel)]="EmailStatus.EmailTo[i]" formControlName="EmailTo" name="EmailTo" placeholder="Email To">
+                </mat-form-field>
+                <button class='col-md-2' type="button"  mat-icon-button mat-raised-button matSuffix (click)="i==0?onClickEmailToAdd(i):onClickEmailToRemove(i)" [attr.aria-pressed]="hide">
+                    <mat-icon *ngIf="i==0">add_circle</mat-icon>
+                    <mat-icon *ngIf="i>0">remove_circle</mat-icon>
+                </button>
+            </mat-card>
+          </div>
+          <div class="scroller-container" formArrayName="EmailCcControl">
+            <mat-card class='col-md-12' *ngFor="let EmailCc of EmailStatus.EmailCc; let j = index;trackBy:trackByIdx" [formGroupName]="j" cdkScrollable>
+                <mat-form-field class="col-sm-10" >
+                    <input matInput [(ngModel)]="EmailStatus.EmailCc[j]" formControlName="EmailCc" name="EmailCc" placeholder="Email Cc">
+                </mat-form-field>
+                <button class='col-md-2' type="button"  mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickEmailCcAdd(j):onClickEmailCcRemove(j)" [attr.aria-pressed]="hide">
+                    <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                    <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                </button>
+            </mat-card>
+          </div>
+        </mat-card-content>              
+  
+        <button type="button" *ngIf="this.IsNullOrGuidEmpty(EmailStatus.EmailStatusId)" color="accent" (click)="SaveEmailStatus()" class="btn-block">Add</button>
+        <button type="button" *ngIf="!this.IsNullOrGuidEmpty(EmailStatus.EmailStatusId)" color="accent" (click)="SaveEmailStatus()" class="btn-block">Edit</button>
+  
+      </form>
+    </mat-card>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>    
+    </div>
+  </div>

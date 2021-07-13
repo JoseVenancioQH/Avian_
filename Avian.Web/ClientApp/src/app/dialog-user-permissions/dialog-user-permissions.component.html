@@ -1,0 +1,32 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+        <mat-card-title>Add Permissions</mat-card-title>
+        </mat-card-header>
+    
+        <form [formGroup]="PermissionsForm">
+        
+        <mat-card >
+            <div class='row' >
+                <div class='col-md-12'>
+                <mat-button-toggle-group class="float-right" appearance="legacy" class="form-control" formControlName="PermissionsType" [(ngModel)]="Catlogs.CatlogsType" [value]="Catlogs.CatlogsType" name="fontStyle" class='float-right' aria-label="Font Style" #group="matButtonToggleGroup">                
+                    <mat-button-toggle [value]="'Permissions'">Permissions Form</mat-button-toggle>                  
+                    <mat-button-toggle [value]="'PermissionsCRUD'">Permissions CRUD</mat-button-toggle>                                  
+                </mat-button-toggle-group>
+                </div>
+            </div>
+        </mat-card>
+    
+        <mat-card-content>
+            <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="Catlogs.CatlogsName" formControlName="PermissionsName" name="PermissionsName" placeholder="Permissions Name">
+            </mat-form-field>          
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="Catlogs.CatlogsPrefix" formControlName="PermissionsPrefix" name="PermissionsPrefix" placeholder="Permissions Prefix">
+            </mat-form-field>  
+        </mat-card-content>  
+        <button type="button" color="accent" (click)="SavePermissions()" class="btn-block">Add</button>  
+        </form>
+    </mat-card>
+    </div>
+        

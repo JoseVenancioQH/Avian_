@@ -1,0 +1,69 @@
+<!--<div class='main-nav'>-->
+  <nav class='navbar navbar-expand-lg navbar-dark flex-row' style="background-color:#6E594A;">
+    <div class="navbar-header p-0">
+      <a class='navbar-brand' [routerLink]='["/"]'>Avian.Web</a>
+      <button type='button' class='navbar-toggler' data-toggle='collapse' data-target='#navbarNav' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
+        <span class='sr-only'>Toggle navigation</span>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+    </div>
+    <div class="contenedor">
+      <mat-card class="tarjeta">
+        <mat-card-header>
+  
+        </mat-card-header>
+        <img mat-card-image src="assets/img/avian-bap.png" alt="Avian Web">
+  
+      </mat-card>
+    </div>
+    <div class='clearfix p-2'></div>
+    <!--<div id="navbarNav" class='navbar-collapse collapse p-12' [ngClass]='{ "in": isExpanded }'>
+      <ul class='nav navbar-nav flex-row mr-auto'>
+        <li class="nav-item" [routerLinkActive]='["link-active"]' *ngFor="let Permissions of this.CatlogsPermissions; let j = index">
+          <a [routerLink]='[Permissions.CatlogsPrefix]' class="nav-link" (click)='collapse()'>
+            <span class='fas fa-home'></span> {{Permissions.CatlogsName}}
+          </a>
+        </li>
+      </ul>
+    </div>-->
+  
+    <div id="navbarNav" class='navbar-collapse collapse p-12' [ngClass]='{ "in": isExpanded }'>
+      <ul class='nav navbar-nav flex-row mr-auto'>
+        <li *ngFor="let Profile of this.currentUser.Data.ProfileUser; let j = index">
+          <ul class='nav navbar-nav flex-row mr-auto'>
+            <li *ngFor="let ProfileArray of Profile.Profile; let k = index">
+              <ul class='nav navbar-nav flex-row mr-auto'>
+                <li class="nav-item" [routerLinkActive]='["link-active"]' *ngFor="let Permissions of ProfileArray.Permissions; let l = index">
+                    <a *ngIf="Permissions.CatlogsType=='Permissions'" [routerLink]='[Permissions.CatlogsPrefix]' class="nav-link" (click)='collapse()'>
+                      <span class='fas fa-home'></span> {{Permissions.CatlogsName}}
+                    </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>  
+  
+    <div class='nav-item nav-link float-right text-light'>
+      <button (click)="logout()" class="mat-fab-bottom-right mat-color" mat-fab style="background-color: white;">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+      Logout
+    </div>
+    <button class="text-light" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="ViewAgencyForm('agency-form-plain')">
+        <mat-icon>list</mat-icon>
+        <span>View Plain</span>
+      </button>
+      <button mat-menu-item (click)="ViewAgencyForm('agency-form')">
+        <mat-icon>view_list</mat-icon>
+        <span>View Stepper</span>
+      </button>
+    </mat-menu>
+  </nav>  
+  <!--</div>-->
+  

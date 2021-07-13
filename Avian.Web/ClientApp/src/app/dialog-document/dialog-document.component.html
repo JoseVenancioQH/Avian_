@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let Element of data.Document; let j = index">      
+      <button mat-raised-button (click)="DownloadFile(Element)" class='col-md-12'><mat-icon>cloud_download</mat-icon>{{Element.NameDisplay}}</button>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>    
+</div>

@@ -1,0 +1,44 @@
+<!-- nav -->
+<block-ui>
+  <app-nav-menu *ngIf="currentUser"></app-nav-menu>
+  
+  <!--<nav class='navbar navbar-expand-lg navbar-dark flex-row' style="background-color:#6E594A;" *ngIf="currentUser">
+      <div class="navbar-header p-0">
+        <a class='navbar-brand' [routerLink]='["/"]'>Avian.Web</a>
+        <button type='button' class='navbar-toggler' data-toggle='collapse' data-target='#navbarNav' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
+          <span class='sr-only'>Toggle navigation</span>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+      </div>
+      <div class='clearfix p-2'></div>
+      <div id="navbarNav" class='navbar-collapse collapse p-12' [ngClass]='{ "in": isExpanded }'>
+        <ul class='nav navbar-nav flex-row mr-auto'>        
+          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a [routerLink]='["/agency-form"]' class="nav-link" (click)='collapse()'>
+              <span class='fas fa-home'></span> Add Agency
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a [routerLink]='["/broker-information"]' class="nav-link" (click)='collapse()'>
+              <span class='fas fa-sort-amount-up'></span> Broker Information
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a [routerLink]='["/manage-user"]' class="nav-link" (click)='collapse()'>
+              <span class='fas fa-database'></span> Manage User
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a [routerLink]='["/manage-catlogs"]' class="nav-link" (click)='collapse()'>
+              <span class='fas fa-database'></span> Manage Catlogs
+            </a>
+          </li>    
+        </ul>
+      </div>    
+      <a class="nav-item nav-link float-right" (click)="logout()">Logout</a>    
+  </nav>-->
+  <!-- main app container -->
+  <!--<div class="container">-->
+      <router-outlet></router-outlet>
+  <!--</div>-->
+  </block-ui>

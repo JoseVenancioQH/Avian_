@@ -1,0 +1,192 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h3 mat-dialog-title>
+            Catlogs
+          </h3>
+          <div class="broker-information-container mat-elevation-z8">
+            <table #tableCatlogs mat-table [dataSource]="dataSourceCatlogs">
+    
+              <!-- Name Column -->
+              <ng-container matColumnDef="CatlogsName" sticky>
+                <th mat-header-cell *matHeaderCellDef> Catlog Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.CatlogsName}} </td>
+              </ng-container>
+    
+              <!-- Position Column -->
+              <ng-container matColumnDef="CatlogsPrefix">
+                <th mat-header-cell *matHeaderCellDef> Catlog Prefix </th>              
+                <td mat-cell *matCellDef="let element"> {{element.CatlogsPrefix}} </td>
+              </ng-container>
+    
+              <!-- Weight Column -->
+              <ng-container matColumnDef="CatlogsType">
+                <th mat-header-cell *matHeaderCellDef> Catlog Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.CatlogsType}} </td>
+              </ng-container>           
+    
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element;index as i;">
+    
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="viewCatlogs(i)">
+                      <mat-icon>pageview</mat-icon>
+                      <span>View</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+    
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsCatlogs"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsCatlogs;"></tr>
+            </table>
+            <mat-paginator #MatPaginatorCatlogs="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+    
+        </div>
+      </div>
+    </div>   
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h3 mat-dialog-title>
+            States
+          </h3>
+          <div class="broker-information-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceStates">        
+    
+              <!-- Position Column -->
+              <ng-container matColumnDef="StateName">
+                <th mat-header-cell *matHeaderCellDef> State Name </th>              
+                <td mat-cell *matCellDef="let element"> {{element.StateName}} </td>
+              </ng-container>
+    
+              <!-- Weight Column -->
+              <ng-container matColumnDef="StatePrefix">
+                <th mat-header-cell *matHeaderCellDef> State Prefix </th>
+                <td mat-cell *matCellDef="let element"> {{element.StatePrefix}} </td>
+              </ng-container>           
+    
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element;index as i;">
+    
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="State">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="viewCatlog(i)">
+                      <mat-icon>pageview</mat-icon>
+                      <span>View</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+    
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsStates"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsStates;"></tr>
+            </table>
+            <mat-paginator #MatPaginatorStates="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+    
+        </div>
+      </div>
+    </div>     
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h3 mat-dialog-title>
+            Product Written
+          </h3>
+          <div class="broker-information-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceCatlogsProductWritten">        
+    
+              <!-- Position Column -->
+              <ng-container matColumnDef="ProductWrittenCatlogsName">
+                <th mat-header-cell *matHeaderCellDef> ProductWritten Name </th>              
+                <td mat-cell *matCellDef="let element"> {{element.ProductWrittenCatlogsName}} </td>
+              </ng-container>
+    
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element;index as i;">
+    
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Product Written">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="viewCatlog(i)">
+                      <mat-icon>pageview</mat-icon>
+                      <span>View</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+    
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsProductWritten"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsProductWritten;"></tr>
+            </table>
+            <mat-paginator #MatPaginatorProductWritten="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+    
+        </div>
+      </div>
+    </div>   
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <h3 mat-dialog-title>
+            Profile
+          </h3>
+          <div class="broker-information-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceProfile">        
+    
+              <!-- Position Column -->
+              <ng-container matColumnDef="ProfileName">
+                <th mat-header-cell *matHeaderCellDef> Profile Name </th>              
+                <td mat-cell *matCellDef="let element"> {{element.ProfileName}} </td>
+              </ng-container>
+    
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element;index as i;">
+    
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Profile">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="viewCatlog(i)">
+                      <mat-icon>pageview</mat-icon>
+                      <span>View</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+    
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsProfile"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsProfile;"></tr>
+            </table>
+            <mat-paginator #MatPaginatorProfile="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+    
+        </div>
+      </div>
+    </div>   
+  </mat-grid-tile>
+</mat-grid-list>

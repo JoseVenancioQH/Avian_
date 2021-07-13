@@ -1,0 +1,1126 @@
+﻿@model Avian.Core.DomainModels.objDocumentAgency;
+@using System.Globalization;
+
+@{
+    List<string> FullName = new List<string> { };
+    List<string> FullTaxId = new List<string> { };    
+
+    foreach (var item in Model.objAgency.AbownerOfficer)
+    {
+        FullTaxId.Add(String.Concat(item.TaxId));
+        FullName.Add(String.Concat(item.FirstName, " ", item.LastName));
+    }
+    List<string> FullAgencyEmail = new List<string> { };
+    foreach (var item in Model.objAgency.Abemail)
+    {
+        FullAgencyEmail.Add(String.Concat(item.Email));
+    }
+    List<string> FullAgencyPhone = new List<string> { };
+    foreach (var item in Model.objAgency.Abphone)
+    {
+        FullAgencyPhone.Add(String.Concat(item.Phone));
+    }
+}
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <style TYPE="text/css">
+        .td-inline {
+            border-bottom: 1px solid black;
+            margin: 0px;
+            padding: 0px;
+            text-align: left;
+        }
+
+        body {
+            font-family: Arial, Helvetica, Verdana;
+            font-size: 12pt;
+            text-align: justify;
+        }
+        .list-group ul li {
+            border: none;
+            margin: 0px;
+            text-align:justify;
+        }
+
+        .row ul .box .box-info {
+            border: none;
+            margin: 0px;
+        }
+
+        ul {
+            background-color: none;
+            border: none;
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            text-align: justify;
+        }
+
+        table {
+            border-spacing: 10px;
+        }
+
+        td {
+            padding: 0px;
+        }
+
+        .form-check-label {
+            font-size: 16pt;
+            /*font-family: 'Times New Roman', Times, serif;*/
+            font-family: Arial, Helvetica, Verdana;
+        }
+
+        .page-breaker {
+            display: block;
+            clear: both;
+            page-break-after: always;
+        }
+
+        .input-group {
+            border: none;
+            background: none;
+        }
+
+        .btn-secondary, .input-group-btn, .form-horizontal, .box-body, .box, .box-info {
+            background: none;
+            border: none;
+            font-family: Arial, Helvetica, Verdana;
+            font-size: 12pt;
+        }
+
+        input[type=text] {
+            border: none;
+            border-bottom: 1px solid black;
+            background: none;
+        }
+
+        input {
+            border: 0;
+        }
+
+        .background-none, .form-check-input {
+            background: none;
+            border-bottom: 1px solid black;
+            font-family: Arial, Helvetica, Verdana;
+            font-size: 12pt;
+        }
+
+        .form-check-label {
+            font-family: Arial, Helvetica, Verdana;
+            font-size: 10pt;
+        }
+
+        .alig-text-spesific {
+            text-align: left !important;
+        }
+
+        
+
+        .background-white {
+            border: none;
+            background-color: none;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            margin-top: 0px;
+            padding-top: 0px;
+            font-family: Arial, Helvetica, Verdana;
+            font-size: 12pt;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <br />
+        <div class="text-center">
+            <img src="data:image/jpeg;base64,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">
+        </div>
+        <br />
+
+        The following information will be held in strict confidence by Reliance Premium Finance Inc DBA Avian Premium Finance (“AVIAN”), and will be used only for the purpose of determining the credit worthiness of the applicant.
+
+        <br />
+        <br />
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        Date:
+                    </td>
+                    <td width="35%" class="td-inline">
+                        @System.DateTime.Now.ToString("d", DateTimeFormatInfo.InvariantInfo)
+                    </td>
+                    <td width="65%">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <h5 class="text-left">Applicant Information</h5>
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="15%">
+                        Agency Name:
+                    </td>
+                    <td width="30%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyName)
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="50%">
+                        <label class="form-check-label">
+                            @if ((Model.TypeAgency == "Corporation"))
+                            {
+                                <img style="margin-left:5px;" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            Corporation
+                        </label>
+
+                        <label class="form-check-label">
+
+                            @if ((Model.TypeAgency == "Sole Proprietor"))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            Sole Proprietor
+                        </label>
+
+                        <label class="form-check-label">
+
+                            @if ((Model.TypeAgency == "Partnership"))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            Partnership
+                        </label>
+
+                        <label class="form-check-label">
+                            @if ((Model.TypeAgency == "Individual"))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+
+                            Individual
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="15%">
+                        Street Address:
+                    </td>
+                    <td width="85%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyStreet)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        City:
+                    </td>
+                    <td width="35%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyCity)
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="10%">
+                        State:
+                    </td>
+                    <td width="70%" class="td-inline">
+                        @Html.DisplayFor(model => model.stringState)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        Zip Code:
+                    </td>
+                    <td width="35%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyZip)
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="10%">
+                        Email:
+                    </td>
+                    <td width="70%" class="td-inline">
+                        @String.Join(",", FullAgencyEmail.ToArray())
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="16%">
+                        Phone Number:
+                    </td>
+                    <td width="29%" class="td-inline">
+                        @String.Join(",", FullAgencyPhone.ToArray())
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="10%">
+                        Fax Number:
+                    </td>
+                    <td width="40%" class="td-inline">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="15%">
+                        Federal Tax ID:
+                    </td>
+                    <td width="30%" class="td-inline">
+                        @String.Join(",", FullTaxId.ToArray())
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="15%">
+                        Contact Name:
+                    </td>
+                    <td width="35%" class="td-inline">
+                        @String.Join(",", FullName.ToArray())
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="20%">
+                        Annual P&C Business:
+                    </td>
+                    <td width="25%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyAnnualB)
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="30%">
+                        Annual Premium Finance Business:
+                    </td>
+                    <td width="20%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyAnnualP)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="23%">
+                        Number of Years in Business:
+                    </td>
+                    <td width="17%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyNumberYear)
+                    </td>
+                    <td width="5%">
+                    </td>
+                    <td width="20%">
+                        Number of Employees:
+                    </td>
+                    <td width="25%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyNumberEmployee)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="20%">
+                        Average Size of Premium:
+                    </td>
+                    <td width="25%" class="td-inline">
+                        @Html.DisplayFor(model => model.objAgency.AgencyAverageSize)
+                    </td>
+                    <td width="55%" colspan="3">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <table width="100%">
+                <tr>
+                    <td width="40%">
+                        Primary/Specialty Product Written:
+                    </td>
+                    <td width="60%">
+                        <label class="form-check-label" for="gridCheck">
+                            @if ((Model.TypeWritten.Contains("Trucking")))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            Trucking
+                        </label>
+
+                        <label class="form-check-label">
+                            @if ((Model.TypeWritten.Contains("General Liab")))
+                            {
+                                <img style="margin-left:5px;" width="20" style="margin-left:5px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            General Liab
+                        </label>
+
+
+                        <label class="form-check-label">
+                            @if ((Model.TypeWritten.Contains("HOA")))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            HOA
+                        </label>
+
+
+                        <label class="form-check-label">
+                            @if ((Model.TypeWritten.Contains("Comm")))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                            }
+                            Comm
+                        </label>
+
+                        <label class="form-check-label">
+                            @if ((Model.TypeWritten.Contains("Other")))
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO5SURBVEhLtZdJKP1RFMe/75llikyRkJKVyBDFQrGgkCwNSSFlr2xQio2ykgWRDRuZsrBDiGSK2LAxlnnM/P6+5/+7z3t4vPfwqVvvnJ/f/f7uueece+kMrywtLWFmZgaOjo6wldfX4eTkhPLycs1jmcvLS3h5eclv3ejoqKGoqAj+/v7isIenpyc8Pj5iZ2dH85hzfX2NuLg4XFxcwNfXF8vLy3DQ6/X1Nzc3cHV1hbOzs13Dzc0Nd3d3iIqKQnR0tCb3BkUZTR8fHzw8PGB3dxevunp5qNPpZBCGz5bBFZ+fnyM2NlbeNyU7OxvPz8/ygZzfwcEBt7e30Csxwkn4Rwwbv8yawZWSzs5OhIWFyW9FbW0tNjY24O7uLjbnPz4+Rl1dHcyyiRPFx8ejt7dX89jPwMAAenp6EBQUJDZFDw8P0dHRgdDQUPyPswlc7U/Z2tpCVVWViKqIcitKSkpQUFAg9gfh3yAjIwPBwcFGUe5pTEwMWlpaxCa/LpyUlAQPDw9JIsIIMoHHxsbEVnwrvL+/r/36HvYDhtTFxUXsl5cXSaa5uTmxTbEofHZ2hoiICEm28PBw6Tpf0draisnJSVktYTLt7e1heHgYnp6e4jPFonBNTY3UHveKk6WlpWlPPjI1NYXm5mb4+flpHuDo6AgNDQ1ITEzUPOZYFGZpcZ+YIPwAJkhlZaX29I3T01MUFhYiJCTEmExXV1fIyspCdXW12J9hUZgr4FczZIThGhkZwdDQkNiKlJQUBAYGahZwf3+PgIAAdHV1aZ7PsSgcGRmJpqYmnJycaB6IQEVFhXG/MzMzJWNVZNj1GJnp6Wl5rigrK0NycrLkgcKiMKFIQkKCTEY4OVeTm5uL+vp6bG9vywFBPyPDCuB+m8JtmJiYkDkYxb6+PvF/KUzY+rgSDsKzl/va398Pb29v8VH04OAA3d3d0g5NWVlZkTOY7/FIXFhYEP+3wmR8fFxWo/abRxxXqmDpMTo5OTma5433lwtlWyXMemZpcL+VuIJnOY/DxsZGzWMdVgkTlgabiToG+QFsh+xS7zPdGqwWJoODgyLMOmWysNzm5+e1p7ZhkzBZX1+XWwVPoNXVVbky2YPNwrxNtLW1ob29XUrLXsyEVcsjPFl+Oog6Ht+jKy0tNbC22I8JezTr9LdgVNSFknmRn58vjURXXFxsWFxcNAr/JRTOy8uTm4ieoVBh+WvY/VQD0a2trRlSU1Olnf0lXBxPrs3NTbnYy/9OdMzOzlpMhN+ADSc9PV2zgH+y2Q2yNM4VSgAAAABJRU5ErkJggg==">
+                                @String.Concat("Other: ");<u>@String.Concat(@Model.TypeWrittenOther);</u>
+                            }
+                            else
+                            {
+                                <img style="margin-left:5px;" width="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAIAAAD5mpj+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVEhL7dYxDsMgDEDRHoWNhYEUOApH5iT0EggBNY4niyXUU8WbIiv5SCgSvAbqveecPxJKKXdzplNKlyjnXK11pmkgSms909ZaGshRSi3S7y3ee/oeLdLGGJhsaK1RAi3S8Hy/+hT8Y5RAJ33SzEkzJ82cNPPH6T1wPFICLdJSKM0WFBFjnGnYJrjvADz1fwXdEMIY4wstatBVQ9bkNgAAAABJRU5ErkJggg==">
+                                @String.Concat("Other");
+                            }
+                        </label>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br />
+
+        <ul class="list-group list-group-flush background-white">
+            <li class="list-group-item justify-content-between list-group-item-primary align-items-left background-white">
+                Insurance Company or General Agents Used:
+                <ul class="list-group list-group-flush background-white">
+                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td width="4%">
+                                    </td>
+                                    <td width="27%">
+                                        Insurance Carrier
+                                    </td>
+                                    <td width="27%">
+                                        General Agent
+                                    </td>
+                                    <td width="27%">
+                                        How Long
+                                    </td>
+                                    <td width="15%">
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int x = 0;}
+                                @foreach (var item in Model.objAgency.Abcarrier)
+                                {
+                                    x++;
+                                    <tr>
+                                        <td width="4%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <span># @x</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="27%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Html.DisplayFor(modelItem => item.CarrierName)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="27%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Html.DisplayFor(modelItem => item.AgentName)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="27%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Convert.ToDateTime(item.AppointedSince).ToString("d",DateTimeFormatInfo.InvariantInfo)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="15%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    (Years/Months)
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br />
+        <ul class="list-group list-group-flush background-white">
+            <li class="list-group-item justify-content-between list-group-item-primary align-items-left background-white">
+                Owner/Officer (s)
+                <ul class="list-group list-group-flush background-white">
+                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td width="4%">
+                                    </td>
+                                    <td width="32%">
+                                        Name
+                                    </td>
+                                    <td width="32%">
+                                        TAX ID
+                                    </td>
+                                    <td width="32%">
+                                        DOB
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int i = 0;}
+                                @foreach (var item in Model.objAgency.AbownerOfficer)
+                                {
+                                    i++;
+                                    <tr>
+                                        <td width="4%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <span># @i</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="32%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="32%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Html.DisplayFor(modelItem => item.TaxId)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="32%">
+                                            <div class="input-group col-xs-12">
+                                                <div class="input-group-btn">
+                                                    <input type="text" class="form-control" value="@Convert.ToDateTime(item.Dob).ToString("d",DateTimeFormatInfo.InvariantInfo)">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="page-breaker"></div>
+
+        <h4 class="text-center">Broker Agreement</h4>
+
+        This Broker Agreement (“Agreement”) is made between AVIAN Premium Finance, Inc. DBA Avian Premium Finance (“AVIAN”) and &nbsp;<u><b>@Html.DisplayFor(model => model.objAgency.AgencyName)</b></u>&nbsp; (“Broker”) as of &nbsp;<u><b>@Convert.ToDateTime(Model.objAgency.DateTimeCreate).ToString("d", DateTimeFormatInfo.InvariantInfo)</b></u>&nbsp; (the “Effective Date”). AVIAN and BROKER may collectively be referred to as “parties” and individually as “party”.
+
+
+        <h4 class="text-center">Introduction</h4>
+
+        WHEREAS BROKER, is in the business of procuring insurance policies for individuals and entities (each an “Insured” and collectively as “insureds”); WHEREAS, AVIAN is in the business of providing insurance premium financing services to the Insureds (“the PremiumFinancing Services”);WHEREAS, AVIAN wishes to authorize BROKER to offer the Insureds the Premium Financing Services on behalf ofAVIAN, and BROKER wishes to offer the Insureds the Premium Financing Services on behalf of AVIAN; andWHEREAS, BROKER and AVIAN have agreed to enter into this Agreement to set forth the terms and conditions relativeto the BROKER’S offering the Premium Financing Services on behalf of AVIAN.NOW, THEREFORE, in consideration of the mutual covenants and conditions set forth herein, the receipt and sufficiency
+
+        <h4 class="text-center">Agreement</h4>
+        <div class="box box-info background-white">
+            <!-- /.box-header -->
+            <form class="form-horizontal background-white">
+                <div class="box-body background-white">
+                    <div class="row">
+                        <ul class="list-group list-group-flush background-white background-white">
+                            <li class="list-group-item justify-content-between list-group-item-primary align-items-left background-white background-white">
+                                <!--<span class="badge badge-primary badge-pill align-items-left background-white">1</span>-->
+                                <u style="margin-right:5px;"><b>1. Authorization</b></u>
+                                <ul class="list-group list-group-flush background-white background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white background-white">
+                                        <span class="badge badge-primary badge-pill"></span>
+                                        AVIAN hereby authorizes BROKER to offer the Premium Financing Services to Insureds in applicable states on non-exclusive basis as of the EFFECTIVE DATE, and BROKER hereby accepts such appointment, upon the terms and conditions set forth below.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item list-group-item-primary justify-content-between align-items-center background-white">
+                                <!--<span class="badge badge-primary badge-pill">2</span>-->
+                                <u style="margin-right:5px;"><b>2. Prodcedures for Insurance</b></u>
+                                <ul class="list-group list-group-flush background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        <span class="badge badge-primary badge-pill"></span>
+                                        The rights and duties of the parties in the construction of this Agreement shall be governed by the laws of the State of California.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        <!--<span class="badge badge-primary badge-pill">2.1</span>-->
+                                        <u style="margin-right:5px;"><b>2.1</b></u> Prodcedures for Insurance
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                <!--<span class="badge badge-primary badge-pill">a)</span>-->
+                                                <p><u style="margin-right:5px;"><b>a)</b></u> Elibility</p>
+                                                <p>
+                                                    Broker will offer the Premium Financing Services only with respect to policies written with insurance companies with a “B+” A.M. Best Rating or better, subject to AVIAN’s discretion. Notwithstanding the foregoing or anything set forth herein to the contrary, AVIAN shall have the right in its sole discretion to decline to provide the Premium Financing Services with respect to any Finance Policy or Financed Policies.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                <!--span class="badge badge-primary badge-pill">b)</span>-->
+                                                <p><u style="margin-right:5px;"><b>b)</b></u> Permitted Financed Policies</p>
+                                                <p>
+                                                    BROKER may offer Premium Financing Services for personal property and casualty insurance premiums for personal insurance policies (the “Personal Financed Policies”) and commercial insurance policies (the “Commercial Financed Policies”). In no event will BROKER offer Premium Financing Services with respect any workers’ compensation insurance policies, auditable or reporting form policies, retrospective rating policies, payroll policies, or minimum earned policies (unless sufficient down payment is received as determined by AVIAN in its sole discretion).
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                <!--<span class="badge badge-primary badge-pill">c)</span>-->
+                                                <p><u style="margin-right:5px;"><b>c)</b></u> Rules and Regulations.</p>
+                                                <p>
+                                                    In addition to the obligations set forth in this agreement, BROKER will at all times during the term of this agreement comply with all state and federal laws and regulations applicable to the Premium Financing Services and Financed policies and all of AVIAN Rules and Regulations. The rules and regulations may be changed from time to time by AVIAN. It is the obligation of BROKER to regularly monitor state and federal laws for any changes applicable to the Premium Finance Services and Financed Policies.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">d)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>d)</b></u> In addition to the obligations set forth in this agreement, BROKER will at all times during the term of this agreement comply with all state and federal laws and regulations applicable to the Premium Financing Services and Financed policies and all of AVIAN Rules and Regulations. The rules and regulations may be changed from time to time by AVIAN. It is the obligation of BROKER to regularly monitor state and federal laws for any changes applicable to the Premium Finance Services and Financed Policies.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">e)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>e)</b></u> Any and all changes, modifications, or endorsements (collectively “Endorsements”) to a policy shall be reported to AVIAN within 72 hours, Broker shall collect from the insured all required additional premium necessary to pay the Endorsements in full or, if financed, to pay the required down payment. Broker shall be liable for any damages, losses, costs incurred by AVIAN as a result of BROKER’s failure to notify AVIAN of a change in the policy or to obtain the required Endorsement premium or down payment.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">f)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>f)</b></u>  In the event of a policy cancellation, BROKER shall return all unearned premium and unearned commissions in its possession immediately to AVIAN. AVIAN may apply the Producer Fee to offset any unearned commission or any other monies due to AVIAN, which are not returned within 30 days.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">g)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>g)</b></u> In the event of a policy cancellation, BROKER shall return all unearned premium and unearned commissions in its possession immediately to AVIAN. AVIAN may apply the Producer Fee to offset any unearned commission or any other monies due to AVIAN, which are not returned within 30 days.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">2.2</span>*@
+                                        <u style="margin-right:5px;"><b>2.2</b></u> Specific Procedures for Commercial Insurance Policies. BROKER will adhere to the following procedures with respect to Commercial Financed Policies:
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">a)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>a)</b></u> BROKER will submit a percentage of the down payment as determined by AVIAN to the approved Carrier/General Agent on the premium payable for the Commercial Financed Policy, net of BROKER’s Commission, together with the applicable application for the Commercial Financed Policy. The down payment shall be submitted to the approved Carrier/General Agent within 72 hours of binding.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">b)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>b)</b></u> BROKER and the insured will fully and accurately complete and execute the Finance Agreement for the applicable Commercial Financed Policy and submit it by fax or mail to AVIAN together with all other documentation and information that AVIAN may request in its sole discretion within its 72 hours of binding.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">c)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>c)</b></u> Upon receipt of confirmation that approved Carrier/General Agent has accepted the application for the Commercial Financed Policy, and upon satisfaction of all other conditions as may be required by AVIAN in its sole discretion, AVIAN will fund the financed premium directly to the approved Carrier/General Agent.
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">d)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>d)</b></u> Any Commercial Financed Policy over $75,000 amount financed must be personally guaranteed by the insured or if the insured is a corporation or limited liability, by an officer or controlling shareholder (s).
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                @*<span class="badge badge-primary badge-pill">3</span>*@
+                                <u style="margin-right:5px;"><b>3. Representation and Warranties. BROKER represents and warrants to AVIAN as follows:</b></u>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="pull-right badge badge-primary badge-pill">3.1</span>*@
+                                        <u style="margin-right:5px;"><b>3.1</b></u> Authority
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">a)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>a)</b></u> BROKER has full legal right, power, and authority to enter into and perform its obligations under this agreement;
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">b)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>b)</b></u> This agreement has been duly authorized, executed, and delivered by BROKER;
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">c)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>c)</b></u> No consent, approval, authorization, or order of any securities or insurance regulatory agency or selfregulatory organization is required, except as may have already been obtained by BROKER in order to perform theservices to be performed by it and
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">d)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>d)</b></u> The due performance of BROKER’s obligations hereunder does not violate or conflict with any agreement, lease, arrangement, or other understanding, whether oral or written, to which broker, is a party or any order or decree by which BROKER is bound.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">3.2</span>*@
+                                        <u style="margin-right:5px;"><b>3.2.</b></u> Licensing.
+                                        BROKER is a duly licensed insurance BROKER or producer under the laws and regulations in which BROKER operates and shall remain so licensed at all times during the term of this agreement. BROKER will provide a copy of all applicable licenses and permits to AVIAN.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">3.3</span>*@
+                                        <u style="margin-right:5px;"><b>3.3.</b></u> Accuracy of Information. BROKER understands and agrees that in permitting BROKER to offer Premium Financing Services, AVIAN is relying on all representations, warranties, and covenants made by BROKER herein, by BROKER and the insured in the Finance Agreement and in any document or other instrument delivered by BROKER or insured to AVIAN. BROKER further agrees that regardless of any investigation made by AVIAN, all of such representations, warranties, and covenants:
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">a)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>a)</b></u> will survive the extension of the Premium Financing Services and delivery to AVIAN of each finance and such other documents and instruments,
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">b)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>b)</b></u> shall be continued in nature
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">c)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>c)</b></u> shall be deemed made and re-dated by BROKER at the time of its submission of each and every Finance Agreement, and
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">d)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>d)</b></u> shall remain in full force and effect until such time as all amounts owed to AVIAN from BROKER and/or any insured shall be paid in full or until this Agreement shall be terminated in the manner provided below, which is the last to occur.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">3.4</span>*@
+                                        <u style="margin-right:5px;"><b>3.4.</b></u> Insurance.
+                                        BROKER carries and at all times during the term of this agreement will carry errors and omissions insurance having a liability limit of no less than one million dollars ($1,000,000) and a deductible amount not exceeding ten thousand dollars ($10,000) with an insurer rated at least “A” rated by A.M. Best’s. Broker has provided copies of such insurance to AVIAN prior to executing this agreement and will provide evidence of such coverage to AVIAN annually (or more frequently at the request of AVIAN).
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">3.5</span>*@
+                                        <u style="margin-right:5px;"><b>3.5.</b></u> Power of Attorney.
+                                        with respect to any Finance Agreement that BROKER has executed on behalf of the insured. Broker represents and warrants that BROKER has received a power of attorney have not been revoked by such Insured. BROKER will provide copies of all of such powers of attorney to AVIAN upon request.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">3.6</span>*@
+                                        <u style="margin-right:5px;"><b>3.6.</b></u> Accuracy of Information.
+                                        All documents and other papers delivered by or on behalf of BROKER and any insured in connection with this agreement are true, complete, accurate, and authenticate. The information furnished by or on behalf of BROKER to AVIAN in connection with this Agreement does not contain any untrue statement of a material fact and does not omit to state a material fact required to be stated therein or necessary to make the statements made, in the context in which made, not false or misleading. There is no fact which BROKER has not disclosed to AVIAN in writing which could be reasonable expected to have an adverse effect on the ability o BROKER to perform its obligations under this Agreement or which could be reasonable expected to have adverse effect on the BROKER’s condition, financial, otherwise
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                @*<span class="badge badge-primary badge-pill">4</span>*@
+                                <u style="margin-right:5px;"><b>4. Covenants</b></u>
+                                During the term of this agreement, BROKER hereby covenants and agrees as follows:
+                                <ul class="list-group list-group-flush background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">4.1</span>*@
+                                        <u style="margin-right:5px;"><b>4.1.</b></u> Financed Policies
+                                        BROKER will monitor all Financed Policies regularly and immediately notify AVIAN of any and all changes to such Finance Policies, including without limitation changes in premium amounts.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">4.2</span>*@
+                                        <u style="margin-right:5px;"><b>4.2.</b></u> Payments
+                                        in the event BROKER receives payments of any amounts due AVIAN, Broker will hold such payment(s) trust for the benefit of AVIAN and deliver the same immediately to AVIAN.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">4.3</span>*@
+                                        <u style="margin-right:5px;"><b>4.3</b></u> Disclosure of Producer Fee
+                                        BROKER shall only charge a Producer Fee if allowed by applicable law. BROKER shall make all required disclosures to the insured of the Producer Fee as required by applicable law.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">4.4</span>*@
+                                        <u style="margin-right:5px;"><b>4.4.</b></u> Record Retention
+                                        BROKER will maintain complete and accurate records and accounts of all Financed Policies, Insureds, and Finance Agreements during the term of this agreement and for a period of five (5) years thereafter. Upon reasonable advance notice to BROKER will provide copies upon request.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">4.5</span>*@
+                                        <u style="margin-right:5px;"><b>4.5.</b></u> Further Assurances
+                                        The parties hereto each agree to execute such other documentation or agreements as may be necessary or desirable for the implementation of this agreement and the transactions contemplated hereby.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                @*<span class="badge badge-primary badge-pill">5</span>*@
+                                <u style="margin-right:5px;"><b>5. Term; Termination</b></u>
+                                <ul class="list-group list-group-flush background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">5.1</span>*@
+                                        <u style="margin-right:5px;"><b>5.1.</b></u> Term
+                                        The term of this agreement shall commence on the effective date and continue until terminated by either party in accordance with this Section 5.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">5.2</span>*@
+                                        <u style="margin-right:5px;"><b>5.2.</b></u> Termination
+                                        This agreement may be terminated immediately by either party upon written notice to the other party. Upon termination, BROKER shall comply with all obligations required under this Agreement concerning any outstanding an active Financed Policies and shall take all steps required under this Agreement to protect AVIAN’s security interest in the unearned premiums, including but not limited to, the immediate return of all unearned premiums and unearned commissions to AVIAN, requiring paid in full endorsements, and notifying AVIAN of any changes to the Financed Policies.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center background-white">
+                                @*<span class="badge badge-primary badge-pill">6</span>*@
+                                <u style="margin-right:5px;"><b>6. Indemnification</b></u>
+                                <ul class="list-group list-group-flush background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">6.1</span>*@
+                                        <u style="margin-right:5px;"><b>6.1.</b></u> BROKER shall indemnify, defend, and hold harmless AVIAN, its directors, officers, employees, affiliates, and its party in accordance with this Section 5. 5.2 Termination This agreement may be terminated immediately by either party upon written notice to the other party. subsidiaries (collectively, “AVIAN Indemnities”) against any losses, claims, damages, liabilities, and expenses (including reasonable attorneys’ fees and expenses) arising from or relating to:
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">a)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>a)</b></u> a breach of any provision, representation, warranty, or covenant of this Agreement by Broker, including without limitation Section 4.1;
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">b)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>b)</b></u> a breach of any provision of a Finance Agreement by the applicable insured and/or BROKER;
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">c)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>c) </b></u>shall be deemed made and re-dated by BROKER at the time of its submission of each and every Finance Agreement, and
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">d)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>d)</b></u> a violation of any state or federal law or regulation or other law applicable to the Premium Financing Services or this Agreement by BORKER, its agents, employees, affiliates, or subsidiaries. Notwithstanding the foregoing, BROKER shall not be required to indemnify any AVIAN Indemnitee for any such losses, claims, damages, liabilities, or expenses to the extent caused by or arising from the negligence, bad faith, or willful misconduct of any AVIAN Indemnitee.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">6.2</span>*@
+                                        <u style="margin-right:5px;"><b>6.2.</b></u> Any amount owing to a AVIAN Indemnitee pursuant to this Section 6 shall be paid to AVIAN Indemnitee on a dollar for dollar basis in the following order until satisfied.
+                                        <ul class="list-group list-group-flush background-white">
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">a)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>a)</b></u> First, by offsetting any other amount owed by AVIAN to BROKER and
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                                @*<span class="badge badge-primary badge-pill">b)</span>*@
+                                                <p>
+                                                    <u style="margin-right:5px;"><b>b)</b></u> Second, if necessary, by payment from the Broker to AVIAN.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center background-white">
+                                @*<span class="badge badge-primary badge-pill">7</span>*@
+                                <u style="margin-right:5px;"><b>7. Miscellaneous</b></u>
+                                <ul class="list-group list-group-flush background-white">
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">7.1</span>*@
+                                        <u style="margin-right:5px;"><b>7.1.</b></u> Relationship
+                                        This Agreement does not create, and shall not construe to create, any joint venture or partnership between the parties. No officer, employee, agent, servant, or independent contractor of either party shall at any time be deemed to be an employee, servant agent or contractor of the other party for any purpose whatsoever. BROKER acknowledges that it is not an agent of RELAINCE, and in no event shall AVIAN be legally bound by anything BROKER represents to any insured, either in writing or orally.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-left background-white">
+                                        @*<span class="badge badge-primary badge-pill">7.2</span>*@
+                                        <u style="margin-right:5px;"><b>7.2.</b></u> Notices
+                                        All notices, requests, demands, and other communications required or permitted hereunder shall be in writing and shall be deemed to have been duly given, made, and received only when personally delivered or delivered by Federal Express or other nationally recognized courier service, or two (2) days after having been deposited in the United States mail, certified mail, postage prepaid, return receipt requested(except when such notice is a termination notice in which event any two (2) of delivery methods described above must be used), addressed as set forth below:
+                                        <br />
+                                        <br />
+                                        <div class="row">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="30%">
+                                                        <b>to Avian:</b>
+                                                    </td>
+                                                    <td width="5%">
+                                                    </td>
+                                                    <td width="60%">
+                                                        <b>to Broker:</b>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="30%">
+                                                        <table>
+                                                            <tr><td>Reliance Premium Finance, Inc.</td></tr>
+                                                            <tr><td> DBA Avian Premium Finance</td></tr>
+                                                            <tr><td>2550 North Hollywood Way, Suite 201</td></tr>
+                                                            <tr><td> Burbank, CA 91505</td></tr>
+                                                            <tr><td>Attention: Andres Gutierrez</td></tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="5%">
+                                                    </td>
+                                                    <td width="65%">
+                                                        <table width="100%">
+                                                            <tr>
+                                                                <td width="20%">
+                                                                    Agency Name:
+                                                                </td>
+                                                                <td width="80%" class="td-inline">
+                                                                    @Html.DisplayFor(model => model.objAgency.AgencyName)
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="30%">
+                                                                    Agency Address:
+                                                                </td>
+                                                                <td width="70%" class="td-inline">
+                                                                    @Html.DisplayFor(model => model.objAgency.AgencyStreet)
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="40%">
+                                                                    City, State, Zip Code:
+                                                                </td>
+                                                                <td width="60%" class="td-inline">
+                                                                    @Html.DisplayFor(model => model.objAgency.AgencyCity), @Html.DisplayFor(model => model.stringState), @Html.DisplayFor(model => model.objAgency.AgencyZip)
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="40%">
+                                                                    Attention: Owner/Officer:
+                                                                </td>
+                                                                <td width="60%" class="td-inline">
+                                                                    @String.Join(",", FullName.ToArray())
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <br />
+                                        <br />
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.3</span>*@
+                                        <u style="margin-right:5px;"><b>7.3.</b></u> Entire Agreement
+                                        This Agreement contains the entire understanding between the parties hereto with respect the subject matter, hereof, and supersedes all prior and contemporaneous agreements and understanding, inducements, or conditions, express or implied, oral or written, except as herein contained. The express terms hereof control and supersede any course of performance or usage of the trade inconsistent with any of the terms hereof. This Agreement may not be modified or amended other than by an agreement in writing signed by an authorized representative of each party hereto.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.4</span>*@
+                                        <u style="margin-right:5px;"><b>7.4.</b></u> Governing Law and Jurisdiction
+                                        This Agreement is entered into and will be performed in California and all questions relating to its validity, interpretation, performance, and enforcement (including, without limitation, provisions, concerning limitations of action), shall be governed by and construed in accordance with the internal laws of the State of California, notwithstanding any conflict-of-laws doctrines of such state or another jurisdiction to the contrary. BROKER agrees to submit to the personal jurisdiction of the courts of the State of California.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.5</span>*@
+                                        <u style="margin-right:5px;"><b>7.5.</b></u> Headings.
+                                        The headings herein are for convenience only; they form no part of this agreement and shall not be given any substantive or interpretive effect whatsoever.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.6</span>*@
+                                        <u style="margin-right:5px;"><b>7.6.</b></u> Attorneys’ Fees.
+                                        The prevailing party in any dispute between the parties arising out of the interpretation, application, or enforcement of any provision of this Agreement shall be entitled to recover all of its reasonable attorneys’ fees and costs whether suit be filed or not, including, without limitation, costs and attorneys’ fees related to or arising out of any arbitration proceeding, trial, or appellate proceedings.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.7</span>*@
+                                        <u style="margin-right:5px;"><b>7.7.</b></u> Arbitration
+                                        Any controversy (whether on an individual or class action basis) regarding any provision of this Agreement any Exhibit, or addendum hereto, shall be submitted to binding arbitration in accordance with the then existing rules of the American Arbitration Association. Any award made by the American Arbitration Association may be enforced as a final judgment in any court of the competent jurisdiction. The site for said arbitration shall be Los Angeles County, CA.
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @*<span class="badge badge-primary badge-pill">7.8</span>*@
+                                        <u style="margin-right:5px;"><b>7.8.</b></u> Severability
+                                        If any provision of this Agreement is held to be illegal, invalid, or unenforceable during the term hereof, such provision shall be enforced to the maximum extent possible so as to effect the intent of the parties, or, if incapable of such enforcement, shall be deemed to be deleted from this Agreement and the remaining provisions hereof shall remain in full force and effect and shall not be affected by the illegal, invalid, or unenforceable provision or its severance from this Agreement.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <table width="100%">
+                            <tr>
+                                <td width="47%">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="20%">
+                                                Agency Name:
+                                            </td>
+                                            <td width="80%" class="td-inline">
+                                                @Html.DisplayFor(model => model.objAgency.AgencyName)
+                                            </td>
+                                        </tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td width="30%">
+                                                BROKER SIGNATURE:
+                                            </td>
+                                            <td width="70%" class="td-inline">
+                                            </td>
+                                        </tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td width="40%">
+                                                By:
+                                            </td>
+                                            <td width="60%" class="td-inline">
+                                                @String.Join(",", FullName.ToArray())
+                                            </td>
+                                        </tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td width="40%">
+                                                Date:
+                                            </td>
+                                            <td width="60%" class="td-inline">
+                                                @Convert.ToDateTime(Model.objAgency.DateTimeCreate).ToString("d", DateTimeFormatInfo.InvariantInfo)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="5%">
+                                </td>
+                                <td width="47%">
+                                    <table width="100%">
+                                        <tr><td width="100%">RELIANCE PREMIUM FINANCE, INC. DBA AVIAN <br />PREMIUM FINANCE</td></tr>
+                                        <tr><td class="td-inline"><br /><br /><br /><br /></td></tr>
+                                        <tr><td> Andres Gutierrez, Chief Sales Officer</td></tr>
+                                        <tr><td><br /><br /></td></tr>
+                                        <tr>
+                                            <td>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td width="10%">
+                                                            Date:
+                                                        </td>
+                                                        <td width="90%" class="td-inline">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

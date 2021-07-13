@@ -1,0 +1,18 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+        <mat-card-title>Add Profile</mat-card-title>
+        </mat-card-header>
+    
+        <form [formGroup]="ProfileForm">
+    
+        <mat-card-content>
+            <mat-form-field class="col-sm-12">
+            <input matInput [(ngModel)]="Profile.ProfileName" formControlName="ProfileName" name="Profile" placeholder="Profile">
+            </mat-form-field>          
+        </mat-card-content>  
+        <button type="button" color="accent" (click)="SaveProfile()" class="btn-block">Add</button>  
+        </form>
+    </mat-card>
+    </div>
+    

@@ -1,0 +1,52 @@
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\packages.config
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\web.config
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Web.Debug.config
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Web.Release.config
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\appsettings.Development.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\appsettings.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\appsettings1.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\package-lock.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Properties\launchSettings.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.exe
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.deps.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.runtimeconfig.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.runtimeconfig.dev.json
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.Views.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.NodeServices.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.Extensions.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\bin\Release\netcoreapp3.1\System.Net.WebSockets.WebSocketProtocol.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.csprojAssemblyReference.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.csproj.CoreCompileInputs.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.MvcApplicationPartsAssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.MvcApplicationPartsAssemblyInfo.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.RazorAssemblyInfo.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.RazorAssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.AssemblyInfoInputs.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.AssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.TagHelpers.input.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.TagHelpers.output.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.RazorCoreGenerate.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Razor\Index.cshtml.g.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.RazorTargetAssemblyInfo.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.RazorTargetAssemblyInfo.cs
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.Views.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.csproj.CopyComplete
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\staticwebassets\ASP.NET Core 2.1 with Angular 7.StaticWebAssets.Manifest.cache
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\staticwebassets\ASP.NET Core 2.1 with Angular 7.StaticWebAssets.xml
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.dll
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\ASP.NET Core 2.1 with Angular 7.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.Web\obj\Release\netcoreapp3.1\Avian.Web.genruntimeconfig.cache

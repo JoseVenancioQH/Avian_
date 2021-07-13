@@ -1,0 +1,595 @@
+<div class="row bg-light">
+  <div class="col-md-12">
+  <div class='row justify-content-center'>  
+      <div class='col-md-10' style="text-align: center;">
+        <mat-card  class="bg-light mat-elevation-z0" *ngIf="!currentUser">
+          <mat-card-header>
+  
+          </mat-card-header>
+          <img mat-card-image src="assets/img/avian-bap.png" alt="Avian Web" style="max-width: 600px; height: auto;" class="center">
+        </mat-card>
+      </div>    
+  </div>
+  
+  <div class='container-fluid'>
+    <div class='row justify-content-center'>
+      <div class='col-sm-10 bg-white'>
+        <form [formGroup]="AgencyForm" class="col-md-12">
+         
+          <mat-card *ngIf="currentUser">
+            <div class='row' >
+              <div class='col-md-12'>
+                
+                <mat-checkbox class='col-md-2' formControlName="checkedReSend" [(ngModel)]="checkedReSend">Re Send Status "Email"</mat-checkbox>
+                
+                <mat-button-toggle-group style="flex-wrap: wrap;" class="form-control col-md-8 float-right" appearance="legacy" formControlName="AgencyStatus" [(ngModel)]="Agency.AgencyStatus" [value]="Agency.AgencyStatus" name="fontStyle" class='float-right' aria-label="Font Style" #group="matButtonToggleGroup">
+                  <div *ngFor="let Catlog of this.CatlogsAgencyStatus;let i = index">
+                    <mat-button-toggle [value]="Catlog.CatlogsId" *ngIf="Catlog.Show">{{Catlog.CatlogsName}}</mat-button-toggle>                  
+                  </div>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+          </mat-card>
+          <br>
+          <!--<mat-step [stepControl]="AgencyFormGroup">-->
+          <ng-template matStepLabel>Agency</ng-template>
+          <!--<mat-step [stepControl]="GeneralDataGroup">-->
+          <ng-template matStepLabel>General Data</ng-template>
+          <div class='row'>
+            <mat-form-field #matformfield appearance="outline" class='col-md-3'>
+              <mat-label #matlabel>Agency Name</mat-label>
+              <input matInput placeholder="Name" class="form-control" formControlName="AgencyName" [(ngModel)]="Agency.AgencyName" name="AgencyName">
+              <mat-error>Required</mat-error> 
+              <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+              <mat-hint>As it appear on P&C License*</mat-hint>
+            </mat-form-field>
+  
+            <section class='col-md-5' style="text-align: center;">
+              <label class="agency-margin"></label>
+              <mat-radio-group  formControlName="AgencyType" name="radioOptAgencyType" [(ngModel)]="Agency.AgencyType">
+                <mat-radio-button class="agency-margin" name="radioOptAgencyType" *ngFor="let Type of this.CatlogsAgencyType;let i = index" [value]="Type.CatlogsId">
+                  {{Type.CatlogsName}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </section>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-4'>
+              <mat-label>TIN</mat-label>
+              <input matInput placeholder="#" mask="000000000" minlength="9" class="form-control" formControlName="AgencyTIN" [(ngModel)]="Agency.AgencyTin" name="AgencyTin">
+              <mat-error>TIN Type 000000000</mat-error>
+            </mat-form-field>
+  
+          </div>
+  
+          <div class='row'>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Street(Primary Location)*</mat-label>
+              <input matInput placeholder="location" class="form-control" formControlName="AgencyStreet" [(ngModel)]="Agency.AgencyStreet" name="AgencyStreet">
+              <mat-error>Required</mat-error> 
+              <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+              <mat-hint>(Primary Location)*</mat-hint>
+            </mat-form-field>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-1'>
+              <mat-label>City *</mat-label>
+              <input matInput placeholder="" [(ngModel)]="Agency.AgencyCity" class="form-control" formControlName="AgencyCity" name="AgencyCity">
+              <mat-error>Required</mat-error> 
+              <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+              <!--<mat-hint>*</mat-hint>-->
+            </mat-form-field>
+  
+            <mat-form-field #matformfield appearance="fill" class='col-md-2'>
+              <mat-label>State</mat-label>
+              <mat-select [(ngModel)]="Agency.AgencyState" name="AgencyState" formControlName="AgencyState" placeholder="State">
+                <mat-option *ngFor="let State of this.States" [value]="State.StateId">
+                  {{State.StatePrefix}} - {{State.StateName}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Required</mat-error> 
+            </mat-form-field>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-1'>
+              <mat-label>Zip *</mat-label>
+              <input matInput placeholder="" [dropSpecialCharacters]="false" mask="00000" [(ngModel)]="Agency.AgencyZip" class="form-control" formControlName="AgencyZip" name="AgencyZip">
+              <mat-error>Zip Code Type 00000</mat-error>
+            </mat-form-field>
+  
+            <div class='col-md-3 scroller-container' formArrayName="AgencyEmailControl">
+              <div class='row' *ngFor="let AgencyEmail of Agency.Abemail; let j = index" [formGroupName]="j" cdkScrollable>
+                <mat-form-field #matformfield appearance="outline" class='col-md-12' *ngIf="AgencyEmail.ControlUpdate">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="---@----.---" [(ngModel)]="AgencyEmail.Email" class="form-control" formControlName="AgencyEmail" name="AgencyEmail[{{j}}]">
+                  <mat-error>Email Type ---@----.---</mat-error>
+                  <button type="button" type="button" mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickAgencyEmailAdd():onClickAgencyEmailRemove(j)" [attr.aria-pressed]="hide">
+                    <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                    <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class='col-md-3 scroller-container' formArrayName="AgencyPhoneControl">
+              <div class='row' *ngFor="let AgencyPhone of Agency.Abphone; let j = index" [formGroupName]="j" cdkScrollable>
+                <mat-form-field #matformfield appearance="outline" class='col-md-12' *ngIf="AgencyPhone.ControlUpdate">
+                  <mat-label>Phone</mat-label>
+                  <input type="text" matInput placeholder="(000) 000-0000" [(ngModel)]="AgencyPhone.Phone" [dropSpecialCharacters]="false" class="form-control" mask="(000) 000 - 0000" placeHolderCharacter="*" formControlName="AgencyPhone" name="AgencyPhone[{{j}}]">
+                  <mat-error>Phone Type (000) 000-0000</mat-error>
+                  <button type="button" mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickAgencyPhoneAdd():onClickAgencyPhoneRemove(j)" [attr.aria-pressed]="hide">
+                    <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                    <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row" *ngIf="currentUser">
+            <div class='col-md-6'>
+              <mat-slide-toggle [(ngModel)]="Agency.AgencyGeneralDataIsCorrect" formControlName="AgencyGeneralDataIsCorrect" name="AgencyGeneralDataIsCorrect" [checked]="Agency.AgencyGeneralDataIsCorrect">
+                Data in this section is correct?
+              </mat-slide-toggle>
+              <mat-form-field #matformfield appearance="outline" *ngIf="!Agency.AgencyGeneralDataIsCorrect" class='col-md-6'>
+                <input matInput placeholder="Describe WRONG or MISSING Information" class="form-control" formControlName="AgencyGeneralDataIsCorrectData" [(ngModel)]="Agency.AgencyGeneralDataIsCorrectData" name="AgencyGeneralDataIsCorrectData">
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <br><hr /><br>
+  
+          <!--<mat-step [stepControl]="CompanyDataGroup">-->
+  
+          <ng-template matStepLabel>Company Data</ng-template>
+          <div class='row'>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Annual P&C Business:</mat-label>
+              
+              <input matInput type="text" maxlength="10" prefix="$ " placeholder="$" [(ngModel)]="Agency.AgencyAnnualB" placeholder="$ 0-9.0-9"  mask="separator.2" thousandSeparator="," class="form-control" formControlName="AgencyAnnualB" name="AgencyAnnualB">            
+              
+              <mat-error>Money Type $ 0-9.0-9</mat-error>
+            </mat-form-field>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Annual Premium Finance Business:</mat-label>
+             
+              <input matInput placeholder="$ 0-9.0-9" maxlength="12" prefix="$ " [(ngModel)]="Agency.AgencyAnnualP" placeholder="$ 0-9.0-9"  mask="separator.2" thousandSeparator="," name="AgencyAnnualP" class="form-control" formControlName="AgencyAnnualP">            
+              
+              <mat-error>Money Type $ 0-9.0-9</mat-error>
+            </mat-form-field>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Number of Years in Business:</mat-label>
+              <input matInput placeholder="#" maxlength="3"  [(ngModel)]="Agency.AgencyNumberYear" placeholder="0-9" mask="0*" name="AgencyNumberYear" class="form-control" formControlName="AgencyNumberYear">
+              <mat-error>Only Digit 0-9</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Number of Employees:</mat-label>
+              <input matInput placeholder="#"  maxlength="4"   [(ngModel)]="Agency.AgencyNumberEmployee" placeholder="0-9" mask="0*" name="AgencyNumberEmployee" class="form-control" formControlName="AgencyNumberEmployee">
+              <mat-error>Only Digit 0-9</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Average Size of Premium:</mat-label>
+              <input matInput placeholder="" maxlength="7"  [(ngModel)]="Agency.AgencyAverageSize" placeholder="0-9" mask="0*"  name="AgencyAverageSize" class="form-control" formControlName="AgencyAverageSize">
+              <mat-error>Only Digit 0-9</mat-error>
+            </mat-form-field>
+  
+            <div class='col-md-2'>
+              <div class='row'>
+                <mat-form-field #matformfield appearance="fill">
+                <mat-label style="font-size: 9px; padding: 0px;">Primary/Specialty Product Written:</mat-label>
+                <mat-select matTooltip="Primary/Specialty Product Written:" #ProductWrittenSelect multiple [compareWith]="compareObjects" (selectionChange)="ProductWrittenOtherChanged($event.value)" formControlName="AbagencyProductWritten" [(ngModel)]="Agency.AbagencyProductWritten" name="ProductWritten" placeholder="Product Written">
+                    <mat-option *ngFor="let Catlog of this.CatlogsProductWritten"
+                                [value]="Catlog">
+                      {{Catlog.ProductWrittenCatlogsName}}
+                    </mat-option>
+                </mat-select>      
+                <mat-error>Required</mat-error>            
+                </mat-form-field>
+              </div>
+              <div class='row'>
+                <mat-form-field #matformfield *ngIf="this.SatusProductWrittenOther" appearance="outline">
+                  <mat-label>Please Specify If Ohter</mat-label>
+                  <input matInput placeholder="Other" [(ngModel)]="Agency.AbagencyProductWritten[this.IndexOther].ProductWrittenAgencyOther" class="form-control" formControlName="ProductWrittenOther" name="ProductWrittenOther">              
+                </mat-form-field>
+              </div>            
+                  
+              <!--<div class='col-md-6'>   
+              <p mat-line>Primary/Specialty Product Written:</p>       
+              <ng-multiselect-dropdown
+                [placeholder]="''"
+                [data]="this.CatlogsProductWritten"
+                formControlName="AbagencyProductWritten"
+                [(ngModel)]="Agency.AbagencyProductWritten"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+              >
+              </ng-multiselect-dropdown>
+              </div>
+              <div class='col-md-3'>               
+                <mat-form-field #matformfield appearance="outline" class='col-md-3'>
+                  <mat-label>Other</mat-label>
+                  <input matInput placeholder="Other" [(ngModel)]="Agency.AgencyCity" class="form-control" formControlName="AgencyCity" name="AgencyCity">              
+                </mat-form-field>
+              </div>-->
+            </div>
+          </div> 
+  
+          <mat-card formArrayName="AgencyCarrierControl" >
+            <p mat-line>Insurance Company or General Agents Used:</p>
+            <div class="scroller-container-carrier col-md-10">
+            <div *ngFor="let Carrier of Agency.Abcarrier; let i = index" class='row' [formGroupName]="i" cdkScrollable>            
+              <div *ngIf="Carrier.ControlUpdate" class='col-md-12'>
+                <mat-form-field #matformfield appearance="outline" class='col-md-4'>
+                  <mat-label>Carrier Name:</mat-label>
+                  <input matInput placeholder="" class="form-control" formControlName="CarrierName" [(ngModel)]="Carrier.CarrierName" name="CarrierName[{{i}}]">
+                </mat-form-field>
+                <mat-form-field #matformfield appearance="outline" class='col-md-4'>
+                  <mat-label>General Agent Name:</mat-label>
+                  <input matInput placeholder="" class="form-control" formControlName="AgentName" [(ngModel)]="Carrier.AgentName" name="AgentName[{{i}}]">
+                </mat-form-field>
+  
+                <mat-form-field #matformfield appearance="outline" class='col-md-3'>
+                  <mat-label>Appointed Since:</mat-label>                
+                  <input type="hidden" (dateChange)="SetDataPickerAppointedSince($event,i)" [min]="minDateAppointedSince" [max]="maxDateAppointedSince" formControlName="AppointedSince_hidden" [matDatepicker]="pickerAppointedSince" [(ngModel)]="Carrier.AppointedSince">             
+                  <input matInput (change)='ngModelDataPickerAppointedSince(i)' class="form-control" [dropSpecialCharacters]="false" name="AppointedSince" mask="00/00/0000" formControlName="AppointedSince" placeholder="MMDDYYYY" >                              
+                  <mat-datepicker-toggle matSuffix [for]="pickerAppointedSince"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerAppointedSince></mat-datepicker>
+                  <mat-error>Change date value MM/DD/YYYY</mat-error>              
+                </mat-form-field>
+  
+                <button type="button" mat-icon-button mat-raised-button matSuffix (click)="i==0?onClickCarrierAdd():onClickCarrierRemove(i)" [attr.aria-pressed]="hide">
+                  <mat-icon *ngIf="i==0">add_circle</mat-icon>
+                  <mat-icon *ngIf="i>0">remove_circle</mat-icon>
+                </button>
+              </div>
+              </div>
+  
+            </div>
+          </mat-card>
+          <br><hr /><br>
+  
+          
+  
+  
+  
+          <ng-template matStepLabel>Owner</ng-template>
+  
+  
+          <ng-template matStepLabel>Owner Officer</ng-template>
+          <p mat-line>Owner Officer(s):</p>
+          <div formArrayName="AgencyOwnerControl" >    
+            <div class="scroller-container col-md-10">      
+            <div *ngFor="let OwnerOfficer of Agency.AbownerOfficer;  let i = index" [formGroupName]="i"  cdkScrollable>
+              <div *ngIf="OwnerOfficer.ControlUpdate" class='col-md-12'>
+                <mat-form-field #matformfield appearance="fill" class='col-md-2'>
+                  <mat-label>Title:</mat-label>
+                  <mat-select required formControlName="OwnerOfficerAgencyTittle" [value]="OwnerOfficer.AgencyTittle" [(ngModel)]="OwnerOfficer.AgencyTittle" name="OwnerOfficerTitle" placeholder="State">
+                    <mat-option *ngFor="let Catlog of this.CatlogsTitle" [value]="Catlog.CatlogsId">
+                      {{Catlog.CatlogsName}}
+                    </mat-option>                    
+                  </mat-select>
+                  <mat-error>Required</mat-error> 
+                </mat-form-field>
+                <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+                  <mat-label>First Name:</mat-label>
+                  <input matInput required placeholder="" class="form-control" formControlName="OwnerOfficerFirstName" [(ngModel)]="OwnerOfficer.FirstName" name="OwnerOfficerFirstName[{{i}}]">
+                  <mat-error>Required</mat-error> 
+                </mat-form-field>
+                <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+                  <mat-label>Last Name:</mat-label>
+                  <input matInput required placeholder="" [(ngModel)]="OwnerOfficer.LastName" class="form-control" formControlName="OwnerOfficerLastName" name="OwnerOfficerLastName[{{i}}]">
+                  <mat-error>Required</mat-error> 
+                </mat-form-field>
+                <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+                  <mat-label>Tax ID:</mat-label>
+                  <input matInput placeholder="00-0000000" [(ngModel)]="OwnerOfficer.TaxId" [dropSpecialCharacters]="false" mask="00-0000000" class="form-control" formControlName="OwnerOfficerTaxId" name="OwnerOfficerTaxId[{{i}}]">
+                  <mat-error>Value Invalid 00-0000000</mat-error>  
+                </mat-form-field>
+                <mat-form-field #matformfield appearance="outline" class='col-md-3'>
+                  <mat-label>DOB:</mat-label>
+                  <input type="hidden" (dateChange)="SetDataPickerOwnerOfficerDob($event,i)"  [min]="minDateOwnerOfficerDob" [max]="maxDateOwnerOfficerDob" formControlName="OwnerOfficerDob_hidden" [matDatepicker]="pickerOwnerOfficerDob" [(ngModel)]="OwnerOfficer.Dob">                
+                  <input  matInput (change)='ngModelDataPickerOwnerOfficerDob(i)' class="form-control" [dropSpecialCharacters]="false" name="OwnerOfficerDob" mask="00/00/0000" formControlName="OwnerOfficerDob" placeholder="MMDDYYYY" >                                                
+                  <mat-datepicker-toggle matSuffix [for]="pickerOwnerOfficerDob"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerOwnerOfficerDob></mat-datepicker>  
+                  <mat-error>Change date value MM/DD/YYYY</mat-error>                            
+                </mat-form-field>
+                <button type="button" mat-icon-button mat-raised-button matSuffix (click)="i==0?onClickOwnerOfficerAdd():onClickOwnerOfficerRemove(i)">
+                  <mat-icon *ngIf="i==0">add_circle</mat-icon>
+                  <mat-icon *ngIf="i>0">remove_circle</mat-icon>
+                </button>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="currentUser">
+            <div class='col-md-6 float-right' *ngIf="currentUser">
+              <mat-slide-toggle [(ngModel)]="Agency.AgencyOwnerOfficerisCorrect" formControlName="AgencyOwnerOfficerisCorrect" name="AgencyOwnerOfficerisCorrect" [checked]="Agency.AgencyOwnerOfficerisCorrect">
+                Data in this section is correct?                
+              </mat-slide-toggle>
+              <mat-form-field #matformfield appearance="outline" class='col-md-6' *ngIf="!Agency.AgencyOwnerOfficerisCorrect">
+                  <input matInput placeholder="Describe WRONG or MISSING Information" [(ngModel)]="Agency.AgencyOwnerOfficerisCorrectData" class="form-control" formControlName="AgencyOwnerOfficerisCorrectData" name="AgencyOwnerOfficerisCorrectData">
+                </mat-form-field>
+            </div>
+          </div>
+          <br><hr /><br>
+  
+          <ng-template matStepLabel>Broker Trust Account Information</ng-template>
+          <p mat-line>Broker Trust Account Information.<br />This Information Will Be Used In Order For The Broker To Make Payments On Client's Behalf</p>
+          <div class='row'>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Bank Name:</mat-label>
+              <input matInput placeholder="" class="form-control" formControlName="AgencyAccountBankName" [(ngModel)]="Agency.AgencyAccountBankName" name="AgencyAccountBankName">
+            </mat-form-field>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Routing Number:</mat-label>
+              <input matInput placeholder="Only Digit 0-9" maxlength="9" mask="0*" class="form-control" formControlName="AgencyAccountRoutingNumber" [(ngModel)]="Agency.AgencyAccountRoutingNumber" name="AgencyAccountRoutingNumber">
+              <mat-error>Only Digit 0-9</mat-error>
+            </mat-form-field>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Account Number:</mat-label>
+              <input matInput placeholder="Only Digit 0-9" maxlength="12" mask="0*" class="form-control" formControlName="AgencyAccountAccountNumber" [(ngModel)]="Agency.AgencyAccountAccountNumber" name="AgencyAccountAccountNumber">
+              <mat-error>Only Digit 0-9</mat-error>
+            </mat-form-field>
+            <mat-form-field #matformfield appearance="outline" class='col-md-2'>
+              <mat-label>Account Holders Name:</mat-label>
+              <input matInput placeholder="" class="form-control" formControlName="AgencyAccountHoldersName" [(ngModel)]="Agency.AgencyAccountHoldersName" name="AgencyAccountHoldersName">
+            </mat-form-field>
+          </div>
+          <div class="row" *ngIf="currentUser">
+            <div class='col-md-4 float-right' *ngIf="currentUser">
+              <mat-slide-toggle [(ngModel)]="Agency.AgencyTrustAccountIsCorrect" formControlName="AgencyTrustAccountIsCorrect" name="AgencyTrustAccountIsCorrect" [checked]="Agency.AgencyTrustAccountIsCorrect">
+                Data in this section is correct?                
+              </mat-slide-toggle>
+              <mat-form-field #matformfield appearance="outline" class='col-md-6' *ngIf="!Agency.AgencyTrustAccountIsCorrect">
+                <input matInput placeholder="Describe WRONG or MISSING Information" [(ngModel)]="Agency.AgencyTrustAccountIsCorrectData" class="form-control" formControlName="AgencyTrustAccountIsCorrectData" name="AgencyTrustAccountIsCorrectData">
+              </mat-form-field>
+            </div>
+          </div>
+          <br><hr /><br>
+  
+          <ng-template matStepLabel>Authorized Agency</ng-template>
+          <p mat-line>Please Provide Authorized Agency Contact Information Below. At Least One Contact Is Required</p>
+          <div class='row'>
+            <mat-form-field #matformfield appearance="fill" class='col-md-2'>
+              <mat-label>How many Authorized Contact?</mat-label>
+              <input matInput type="number" [(ngModel)]="this.contactAutCount" formControlName="contactAutCount" name="contactAutCount" (change)="onChangecontactAut($event)" placeholder="">
+            </mat-form-field>
+          </div>        
+          <mat-card formArrayName="AgencyAutContactControl">
+            <p mat-line>Authorized Contact</p>
+            <div class="scroller-container-authorized">
+            <div *ngFor="let ContactAut of Agency.AbcontAut; let i = index;" [formGroupName]="i" cdkScrollable>
+              
+              <mat-card *ngIf="ContactAut.ControlUpdate" class='col-md-12' >
+                <div class="row">
+                  <div class="col-md-6">
+                    <p mat-line class='form-group'># {{i + 1}}</p>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="onClickcontactAutRemoved(i)" class="contactAutRemoved float-right">
+                      <mat-icon>clear</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <div class="row" >     
+                  <mat-form-field #matformfield appearance="outline" class="col-md-2 form-group">
+                    <mat-label>First Name:</mat-label>
+                    <input matInput placeholder="" Required class="form-control" formControlName="ContactAutFirstName" [(ngModel)]="ContactAut.FirstName" name="ContactAutFirstName[{{i}}]">
+                    <mat-error>Required</mat-error>  
+                  </mat-form-field>
+                  <mat-form-field #matformfield appearance="outline" class="col-md-2 form-group">
+                    <mat-label>Middle Name:</mat-label>
+                    <input matInput Required placeholder="" class="form-control" formControlName="ContactAutMiddleName" [(ngModel)]="ContactAut.MiddleName" name="ContactAutMiddleName[{{i}}]">
+                    <mat-error>Required</mat-error>  
+                  </mat-form-field>
+                  <mat-form-field #matformfield appearance="outline" class="col-md-2 form-group">
+                    <mat-label>Last Name:</mat-label>
+                    <input matInput [(ngModel)]="ContactAut.LastName" class="form-control" formControlName="ContactAutLastName" placeholder="" name="ContactAutLastName[{{i}}]">
+                    <mat-error>Required</mat-error> 
+                  </mat-form-field>
+  
+                  <mat-form-field #matformfield appearance="fill" class="col-md-2 form-group">
+                    <mat-label>Title:</mat-label>
+                    <mat-select formControlName="ContactAutTitle" [(ngModel)]="ContactAut.Title" name="ContactAutTitle" placeholder="Title">
+                      <mat-option *ngFor="let Catlog of this.CatlogsTitle" [value]="Catlog.CatlogsId">
+                        {{Catlog.CatlogsName}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error>Required</mat-error> 
+                  </mat-form-field>
+  
+                  <div class='col-md-2 scroller-container' formArrayName="AgencyAutContactPhoneControl">
+                    <div class='row' *ngFor="let ContactAutPhone of ContactAut.Abphone; let j = index" [formGroupName]="j" cdkScrollable>
+                      <mat-form-field #matformfield appearance="outline" class="col-md-12" *ngIf="ContactAutPhone.ControlUpdate">
+                        <mat-label>Phone:</mat-label>                      
+                        <input matInput placeholder="(000) 000-0000" class="form-control" [dropSpecialCharacters]="false" formControlName="ContactAutPhone" mask="(000) 000 - 0000"   [(ngModel)]="ContactAutPhone.Phone" name="ContactAutPhone[{{i}}][{{j}}]">
+                        <mat-error>Phone Type (000) 000-0000</mat-error>
+                        <button type="button" mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickcontactAutPhoneAdd(i):onClickcontactAutPhoneRemove(i,j)" [attr.aria-pressed]="hide">
+                          <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                          <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+                  </div>
+  
+                  <div class='col-md-2 scroller-container' formArrayName="AgencyAutContactEmailControl">
+                    <div class='row' *ngFor="let ContactAutEmail of ContactAut.Abemail; let j = index" [formGroupName]="j" cdkScrollable>
+                      <mat-form-field #matformfield appearance="outline" class="col-md-12" *ngIf="ContactAutEmail.ControlUpdate">
+                        <mat-label>Email:</mat-label>
+                        <input matInput placeholder="" class="form-control" formControlName="ContactAutEmail" [(ngModel)]="ContactAutEmail.Email" name="ContactAutEmail[{{i}}][{{j}}]">
+                        <mat-error>Email Type ---@----.---</mat-error>
+                        <button type="button" mat-icon-button mat-raised-button matSuffix (click)="j==0?onClickcontactAutEmailAdd(i):onClickcontactAutEmailRemove(i,j)" [attr.aria-pressed]="hide">
+                          <mat-icon *ngIf="j==0">add_circle</mat-icon>
+                          <mat-icon *ngIf="j>0">remove_circle</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+  
+              </mat-card>
+              </div>
+            </div>
+          </mat-card>
+          <div class="row" *ngIf="currentUser">
+            <div class='col-md-6'>
+              <mat-slide-toggle [(ngModel)]="Agency.AgencyAuthorizedContcatIsCorrect" formControlName="AgencyAuthorizedContcatIsCorrect" name="AgencyAuthorizedContcatIsCorrect" [checked]="Agency.AgencyAuthorizedContcatIsCorrect">
+                Data in this section is correct?                  
+              </mat-slide-toggle>
+              <mat-form-field #matformfield class='col-md-6' appearance="outline" *ngIf="!Agency.AgencyAuthorizedContcatIsCorrect">
+                <input matInput placeholder="Describe WRONG or MISSING Information" class="form-control" formControlName="AgencyAuthorizedContcatIsCorrectData" [(ngModel)]="Agency.AgencyAuthorizedContcatIsCorrectData" name="AgencyAuthorizedContcatIsCorrectData">
+              </mat-form-field>
+            </div>
+          </div>         
+          <br><hr /><br>  
+          <ng-template matStepLabel>Documents must be submitted</ng-template>
+          <p mat-line>The following documents must be submitted with your application</p>
+          <div class="row">
+            <div class='col-md-4'>
+              <mat-label>✓ P&C License</mat-label>
+              <input hidden (change)="onFileSelected('PCLicense')" multiple #filePCLicense type="file" id="filePCLicense">
+  
+              <button type="button" mat-icon-button
+                      mat-raised-button
+                      matSuffix
+                      color="primary"
+                      [matBadgeHidden]="this.PCLicense_files.length > 0 || this.DocumentsFiles.PCLicense.length > 0"
+                      matBadge="{{this.PCLicense_files.length}}"
+                      matBadgePosition="before"
+                      matBadgeColor="warn"
+                      (click)="filePCLicense.click()">
+                <mat-icon>cloud_upload</mat-icon>
+              </button>
+              <mat-error *ngIf="this.PCLicense_files.length == 0 && this.DocumentsFiles.PCLicense.length == 0">Enter at least one document</mat-error>
+              <div class="row scroller-container">
+                <mat-list role="list" class='col-md-12' cdkScrollable>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.PCLicense_files; let j = index">
+                    {{Element.name}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('PCLicense',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </mat-list-item>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.DocumentsFiles.PCLicense; let j = index">
+                    {{Element}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('Repo_PCLicense',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>remove</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDownload('FileUpload',Agency.AgencyDocumentId,'PCLicense[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileView('FileUpload',Agency.AgencyDocumentId,'PCLicense[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>pageview</mat-icon>
+                    </button>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <mat-label>✓ Current E&O</mat-label>
+              <input hidden (change)="onFileSelected('CurrentEO')" multiple #fileCurrentEO type="file" id="fileCurrentEO">
+              <button type="button" mat-icon-button
+                      mat-raised-button
+                      matSuffix
+                      color="primary"
+                      [matBadgeHidden]="this.CurrentEO_files.length > 0 || this.DocumentsFiles.CurrentEO.length > 0"
+                      matBadge="{{this.CurrentEO_files.length}}"
+                      matBadgePosition="before"
+                      matBadgeColor="warn"
+                      (click)="fileCurrentEO.click()">
+                <mat-icon>cloud_upload</mat-icon>
+              </button>
+              <mat-error *ngIf="this.CurrentEO_files.length == 0 && this.DocumentsFiles.CurrentEO.length == 0">Enter at least one document</mat-error>
+              <div class="row scroller-container">
+                <mat-list role="list" class='col-md-12' cdkScrollable>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.CurrentEO_files; let j = index">
+                    {{Element.name}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('CurrentEO',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </mat-list-item>
+                </mat-list>
+                <mat-list role="list" class='col-md-12'>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.DocumentsFiles.CurrentEO; let j = index">
+                    {{Element}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('Repo_CurrentEO',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>remove</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDownload('FileUpload',Agency.AgencyDocumentId,'CurrentEO[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileView('FileUpload',Agency.AgencyDocumentId,'CurrentEO[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>pageview</mat-icon>
+                    </button>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <mat-label>✓ W9</mat-label>
+              <input hidden (change)="onFileSelected('W9')" multiple #fileW9 type="file" id="fileW9">
+              <button type="button" mat-icon-button
+                      mat-raised-button
+                      matSuffix
+                      color="primary"
+                      [matBadgeHidden]="this.W9_files.length > 0 || this.DocumentsFiles.W9.length > 0"
+                      matBadge="{{this.W9_files.length}}"
+                      matBadgePosition="before"
+                      matBadgeColor="warn"
+                      (click)="fileW9.click()">
+                <mat-icon>cloud_upload</mat-icon>
+              </button>
+              <mat-error *ngIf="this.W9_files.length == 0 && this.DocumentsFiles.W9.length == 0">Enter at least one document</mat-error>
+              <div class="row scroller-container">
+                <mat-list role="list" class='col-md-12' cdkScrollable>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.W9_files; let j = index">
+                    {{Element.name}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('W9',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </mat-list-item>
+                  <mat-list-item role="listitem" *ngFor="let Element of this.DocumentsFiles.W9; let j = index">
+                    {{Element}}
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDelete('Repo_W9',j)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>remove</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileDownload('FileUpload',Agency.AgencyDocumentId,'W9[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <button type="button" mat-icon-button mat-raised-button matSuffix (click)="fileView('FileUpload',Agency.AgencyDocumentId,'W9[]',Element)" class="icon-button-medium agency-button-row" [attr.aria-pressed]="hide">
+                      <mat-icon>pageview</mat-icon>
+                    </button>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+          <br><hr /><br>
+  
+         
+          <div class="row" *ngIf="currentUser">
+            <div class='col-md-12 example-full-width'>
+              <mat-form-field #matformfield appearance="outline" class="example-full-width col-md-12">
+                <mat-label>Remarks</mat-label>
+                <textarea matInput rows="4" class="form-control" formControlName="AgencyRemarks" name="AgencyRemarks" [(ngModel)]="Agency.AgencyRemarks" name="AgencyRemarks" placeholder="Remarks"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <mat-card>
+            <div class='row'>
+              <div class='col-md-6 float-left'>
+                <button (click)="onClickSaveAgency(Agency.AgencyId)" class="mat-fab-bottom-right mat-color" mat-fab>
+                  <mat-icon>save</mat-icon>
+                </button>                
+                Save
+              </div>
+            </div>
+          </mat-card>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  

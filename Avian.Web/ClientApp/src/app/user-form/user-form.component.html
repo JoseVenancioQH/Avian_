@@ -1,0 +1,132 @@
+<div class='container-fluid'>  
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h3 mat-dialog-title>
+        Manager User
+      </h3>
+    </div>
+  </div>
+  <div class='row'>  
+    <div class='col-sm-2'>        
+        <button mat-menu-item class="float-left" (click)="AddUser()">
+          <mat-icon>add_circle_outline</mat-icon>
+          <span>Add User</span>
+        </button>        
+    </div>
+    <div class='col-sm-2'>        
+      <button mat-menu-item class="float-left" (click)="AddProfile()">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Add Profile</span>
+      </button>        
+    </div>
+    <div class='col-sm-2'>        
+      <button mat-menu-item class="float-left" (click)="AddPermissions()">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Add Permissions</span>
+      </button>        
+    </div>
+    <div class='col-sm-6'>
+      <mat-form-field class="float-right col-sm-3">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class='row'>  
+    <div class='col-sm-12'>
+      <div class="user-form-container mat-elevation-z8">          
+        <table mat-table [dataSource]="dataSource">  
+          <!-- Name Column -->
+          <ng-container matColumnDef="UserName" sticky>
+            <th mat-header-cell *matHeaderCellDef> User Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.UserName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Password" sticky>
+            <th mat-header-cell *matHeaderCellDef> Password </th>
+            <td mat-cell *matCellDef="let element"> {{element.Password}} </td>
+          </ng-container>            
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="FirstName">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="LastName">
+            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="ProfileUser">
+            <th mat-header-cell *matHeaderCellDef> Profile </th>
+            <td mat-cell *matCellDef="let element">                
+              <table *ngFor="let ProfileUser of element.ProfileUser; index as i">
+                <tr *ngFor="let Profile of ProfileUser.Profile; index as j">
+                  <td>
+                    {{Profile.ProfileName}}
+                    <table>                        
+                      <tr>
+                        <td>               
+                          <mat-accordion>                              
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  Permissions
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <button mat-menu-item *ngFor="let Permissions of Profile.Permissions; index as i">
+                                <mat-icon>perm_identity</mat-icon>
+                                <span>{{Permissions.CatlogsName}}</span>
+                              </button>
+                            </mat-expansion-panel>
+                          </mat-accordion>                           
+                        </td>                                      
+                      </tr>                                 
+                    </table>
+                  </td>                                      
+                </tr>                                              
+              </table>
+            </td>
+          </ng-container>           
+          
+
+          <!-- Star Column -->
+          <ng-container matColumnDef="star" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="viewUser(element.UserId)">
+                  <mat-icon>pageview</mat-icon>
+                  <span>View</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>attach_file</mat-icon>
+                  <span>File</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+    </div>
+  
+</div>

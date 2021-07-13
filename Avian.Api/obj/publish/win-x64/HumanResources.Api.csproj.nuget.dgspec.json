@@ -1,0 +1,213 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Api\\HumanResources.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Api\\HumanResources.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Api\\HumanResources.Api.csproj",
+        "projectName": "HumanResources.Api",
+        "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Api\\HumanResources.Api.csproj",
+        "packagesPath": "C:\\Users\\jquintero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Api\\obj\\publish\\win-x64\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jquintero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj": {
+                "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj"
+              },
+              "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\HumanResources.Data.csproj": {
+                "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\HumanResources.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.6, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.6, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj",
+        "projectName": "HumanResources.Core",
+        "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj",
+        "packagesPath": "C:\\Users\\jquintero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jquintero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\HumanResources.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\HumanResources.Data.csproj",
+        "projectName": "HumanResources.Data",
+        "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\HumanResources.Data.csproj",
+        "packagesPath": "C:\\Users\\jquintero\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jquintero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj": {
+                "projectPath": "C:\\Users\\jquintero\\Documents\\HR\\HumanResources\\HumanResources.Core\\HumanResources.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<!--<div class='row'>
+    <div class='col-md-12' style="text-align: center;">
+      <mat-icon [ngStyle]="{'color': '#F4FC1F', 'transform': 'scale(2)'}">warning</mat-icon>
+    </div>
+</div>
+<br>
+<h4 style="text-align: center;">{{data.Action}}</h4>
+<mat-dialog-content>
+<h5 style="text-align: center;">{{data.Message}}</h5>    
+</mat-dialog-content>
+<mat-dialog-actions><button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>    
+</mat-dialog-actions>-->
+
+<mat-dialog-content>
+  <mat-card style="margin:0em;padding-top:0;padding-left:0;padding-right:0" class="example-card">
+    <mat-card-title style="background:rgba(0,0,0,.06); padding:20px 20px;">
+      {{data.Message}}
+      <mat-icon [ngStyle]="{'float':'right', 'transform':'scale(2)','padding':'3px'}">warning</mat-icon>
+    </mat-card-title>
+    <mat-card-content style="padding:1em;">
+      <p>
+        {{data.Action}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions >    
+     
+    </mat-card-actions>
+  </mat-card>
+  </mat-dialog-content>
+  <mat-dialog-actions><button mat-button [mat-dialog-close] cdkFocusInitial>Close</button>
+  </mat-dialog-actions>

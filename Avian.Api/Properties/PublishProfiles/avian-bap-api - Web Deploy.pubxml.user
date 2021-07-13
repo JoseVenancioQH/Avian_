@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHmPILn6Yf0OvnEU1SMCDXAAAAAACAAAAAAAQZgAAAAEAACAAAACC/JzUqXF50B6uvVzur8c7L0+jl4gXa15q4qqgKjGd7QAAAAAOgAAAAAIAACAAAAAVArCQUgrPmlYnZHMhcWE26P2wEX04cwI+0uYqg8WLiYAAAAC4zJJ6xLHgYT2RLy8ZbKDVrgcnNv8C9yuY5iGKg7iLyWb3y8RYuk7VTeDpUQAhOJ2qc2IiNfqmAiu3BY3N8DKVNqCw0XvdKlrMizamppJoAnvb2GH4zou3fhPOlXy+h2hC36bRHg9tbqmXRxsSu6oJ60aSI+IJW7b8Yud1jDA7m0AAAAAbAYEn1/vlIsKLF+iRci7MtmpQkzoCLQSwJ/LqpLx6c5lVInUagqpkpozeAhahozx/Y49BMLeCloFAyPinqcfV</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="AvianBAPConnectionString">
+      <Value>Data Source=ghins.database.windows.net%3bInitial Catalog=AvianBAP%3bpersist security info=True%3bMin Pool Size=3%3buser id=itmanager%3bpassword=r3dL%40mb0%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

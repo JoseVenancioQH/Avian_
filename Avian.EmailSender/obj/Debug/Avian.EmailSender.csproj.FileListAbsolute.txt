@@ -1,0 +1,7 @@
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\bin\Debug\EmailSender.dll.config
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\bin\Debug\EmailSender.dll
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\bin\Debug\EmailSender.pdb
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\obj\Debug\Avian.EmailSender.csproj.CoreCompileInputs.cache
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\obj\Debug\Avian.EmailSender.csproj.CopyComplete
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\obj\Debug\EmailSender.dll
+C:\BackUpJquintero\Avian\Avian\Avian.EmailSender\obj\Debug\EmailSender.pdb
